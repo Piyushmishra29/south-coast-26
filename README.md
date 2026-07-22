@@ -63,7 +63,7 @@ css/                # base.css tokens + one stylesheet per section
 js/                 # site.js (reveals) + per-section scripts
 sections/           # build-time HTML fragments (01-chrome … 07-closing)
 assets/
-  img/              # trip photography (film-graded) + route_map.svg
+  img/              # trip photography (film-graded)
   brand/            # Sunburst logo SVGs (outlined paths)
   fonts/            # Shrikhand + Archivo variable (OFL)
 ```

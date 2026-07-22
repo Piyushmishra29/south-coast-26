@@ -4,8 +4,7 @@
   var section = document.getElementById('realmap');
   if (!section) return;
   var canvas = document.getElementById('realmap-canvas');
-  var fallback = section.querySelector('.realmap-fallback');
-  if (!canvas || !fallback) return;
+  if (!canvas) return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var LEAFLET_VER = '1.9.4';
@@ -33,8 +32,7 @@
   function fail() {
     if (done) return;
     done = true;
-    canvas.style.display = 'none';
-    fallback.hidden = false;
+    section.style.display = 'none';
   }
 
   function build() {
