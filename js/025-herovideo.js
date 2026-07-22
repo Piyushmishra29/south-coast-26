@@ -25,12 +25,25 @@
           e.target.playVideo();
         },
         onStateChange: function (e) {
-          if (e.data === YT.PlayerState.PLAYING) shell.classList.add('is-playing');
-          if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(START, true); e.target.playVideo(); }
+          if (e.data === YT.PlayerState.PLAYING) {
+            shell.classList.add('is-playing');
+          } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
+            // never show YouTube's paused chrome — fade to the poster photo
+            shell.classList.remove('is-playing');
+            if (e.data === YT.PlayerState.ENDED) e.target.seekTo(START, true);
+            setTimeout(function () { try { e.target.playVideo(); } catch (err) {} }, 150);
+          }
         }
       }
     });
   }
+
+  // resume after tab switch / phone unlock instead of sitting on YT's paused UI
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && player && player.playVideo) {
+      try { player.mute(); player.playVideo(); } catch (err) {}
+    }
+  });
 
   function boot() {
     if (window.YT && window.YT.Player) { init(); return; }
