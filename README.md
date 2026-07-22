@@ -23,6 +23,9 @@ page does is hand-rolled:
 - `IntersectionObserver`-driven reveal animations, `prefers-reduced-motion` respected
 - Film-grain overlays, marquee ticker, color-blocked sections — all CSS
 - Route map drawn from real OpenStreetMap-derived coastline data (SVG)
+- **Real interactive map** — lazy-loaded Leaflet + OSM, star pins, the route as actually driven
+- Zine furniture throughout: typewriter mono metadata, coordinates, postage-stamp photo frames, handwritten asides, rubber stamps
+- Dedicated motion layer: masked headline rises, parallax, count-ups, ambient section fades
 
 The visual system comes from the [Bro Knows A Spot brand kit](https://github.com/Piyushmishra29/bro-knows-a-spot):
 cream `#F2E9CE` · ink `#221A12` · terracotta `#B4502A` · Shrikhand for the loud parts ·
@@ -75,9 +78,9 @@ fragment and re-assemble, or just edit `index.html` directly if you're quick-fix
     <td width="60%"><img src="media/shot-hero.jpg" alt="Hero section"></td>
     <td rowspan="2"><img src="media/shot-mobile.jpg" alt="Mobile view"></td>
   </tr>
-  <tr><td><img src="media/shot-route.jpg" alt="Route map and itinerary"></td></tr>
+  <tr><td><img src="media/shot-map.jpg" alt="Real interactive map"></td></tr>
   <tr><td><img src="media/shot-spots.jpg" alt="Spots slider"></td>
-      <td><img src="media/shot-themes.jpg" alt="Party Self Nature"></td></tr>
+      <td><img src="media/shot-stay.jpg" alt="The Stay section"></td></tr>
 </table>
 
 ## Credits

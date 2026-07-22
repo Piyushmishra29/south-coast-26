@@ -1,0 +1,36 @@
+{
+  "map_x": 60,
+  "map_y": 214,
+  "rw": 1180,
+  "rh": 430,
+  "towns": [
+    {
+      "name": "Ahangama",
+      "x": 216,
+      "y": 402,
+      "nights": "2 nights",
+      "dates": "Tue 01\u2013Thu 03"
+    },
+    {
+      "name": "Weligama",
+      "x": 363,
+      "y": 403,
+      "nights": "3 nights \u00b7 base",
+      "dates": "Thu 03\u2013Sun 06"
+    },
+    {
+      "name": "Mirissa",
+      "x": 455,
+      "y": 454,
+      "nights": "day trips",
+      "dates": "from base"
+    },
+    {
+      "name": "Hiriketiya",
+      "x": 1058,
+      "y": 432,
+      "nights": "2 nights",
+      "dates": "Sun 06\u2013Tue 08"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+/* BKAS South Coast '26 — 045 The Stay (forest panel: villas + at-a-glance) */
+
+.stay{
+  background:var(--forest);
+  color:var(--cream);
+  padding:100px 0 90px;
+  overflow:hidden;
+}
+
+.stay-kicker{
+  color:var(--sand);
+  opacity:.85;
+  margin:0 0 40px;
+}
+
+/* --- two-col: photo + copy --- */
+.stay-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+  align-items:center;
+}
+
+.stay-photo{
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  aspect-ratio:4 / 5;
+  box-shadow:8px 8px 0 0 var(--mustard);
+  margin:0 6px 12px 0;
+}
+.stay-photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+}
+
+.stay-title{
+  font-size:clamp(32px, 5vw, 52px);
+  color:var(--cream);
+  margin:0 0 22px;
+}
+
+.stay-copy{
+  font-size:16.5px;
+  line-height:1.65;
+  color:var(--cream);
+  opacity:.88;
+  max-width:46ch;
+  margin:0 0 28px;
+}
+
+.stay-rule{
+  border-top-color:var(--sand);
+  opacity:.5;
+  margin:0 0 22px;
+}
+
+.stay-facts{
+  color:var(--sand);
+  opacity:.85;
+}
+
+/* --- at-a-glance strip --- */
+.stay-glance{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:24px;
+  margin:88px 0 0;
+  padding:44px 0 0;
+  border-top:1px solid rgba(242,233,206,.16);
+  text-align:center;
+}
+
+.stay-stat-num{
+  font-size:clamp(28px, 4.4vw, 44px);
+  color:var(--mustard);
+  margin:0 0 10px;
+}
+
+.stay-stat-label{
+  color:var(--cream);
+  opacity:.72;
+}
+
+/* --- transport strip --- */
+.stay-transport{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  margin:64px 0 0;
+  padding-top:36px;
+  border-top:1px solid rgba(242,233,206,.16);
+}
+
+.stay-transport-img{
+  flex:0 0 auto;
+  width:90px;
+  height:auto;
+}
+
+.stay-transport-copy{
+  flex:1 1 260px;
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--cream);
+  opacity:.9;
+  margin:0;
+}
+
+.stay-transport-mono{
+  flex:0 0 auto;
+  color:var(--sand);
+  opacity:.8;
+  white-space:nowrap;
+}
+
+@media (max-width:860px){
+  .stay{ padding:76px 0 64px; }
+  .stay-grid{ grid-template-columns:1fr; gap:34px; }
+  .stay-glance{ grid-template-columns:repeat(2, 1fr); gap:32px 24px; margin-top:64px; }
+  .stay-transport{ flex-wrap:wrap; margin-top:48px; }
+  .stay-transport-mono{ white-space:normal; }
+}
+
+@media (max-width:520px){
+  .stay-photo{ box-shadow:6px 6px 0 0 var(--mustard); margin:0 4px 10px 0; }
+}

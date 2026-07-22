@@ -1,8 +1,18 @@
 /* BKAS South Coast '26 — Themes triptych (Party · Self · Nature) */
 .themes{
+  position:relative;
   background:var(--ink);
   color:var(--cream);
   padding:110px 0 100px;
+}
+
+.themes-mono{
+  position:absolute;
+  top:28px; right:24px;
+  color:var(--cream);
+  opacity:.5;
+  text-align:right;
+  max-width:280px;
 }
 
 .themes-head{
@@ -46,6 +56,15 @@
   color:var(--cream);
   margin:0 0 12px;
 }
+.themes-col--party .themes-col-title{ color:var(--acid); }
+.themes-col--self .themes-col-title{ color:var(--terra); }
+.themes-col--nature .themes-col-title{ color:var(--mustard); }
+
+.themes-col-tag{
+  color:var(--cream);
+  opacity:.55;
+  margin:0 0 14px;
+}
 
 .themes-col-copy{
   font-size:15px;
@@ -72,4 +91,10 @@
     margin:0 auto;
   }
   .themes-head{ margin-bottom:48px; }
+  .themes-mono{
+    position:static;
+    text-align:center;
+    max-width:none;
+    margin:0 0 32px;
+  }
 }

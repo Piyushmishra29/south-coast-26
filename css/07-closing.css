@@ -37,10 +37,26 @@
   display:flex; flex-direction:column; align-items:center;
 }
 
+.closing-mono{
+  color:var(--cream);
+  opacity:.7;
+  margin:0 0 18px;
+  text-shadow:0 1px 12px rgba(34,26,18,.5);
+}
+
 .closing-star{
   width:54px; height:54px;
   margin-bottom:20px;
   filter:drop-shadow(0 3px 16px rgba(34,26,18,.45));
+}
+
+.closing-printmark{
+  position:absolute;
+  z-index:3;
+  right:20px; bottom:20px;
+  width:110px; height:auto;
+  opacity:.9;
+  pointer-events:none;
 }
 
 .closing-title{
@@ -79,6 +95,7 @@
   .closing-title{ font-size:clamp(36px, 11vw, 56px); }
   .closing-cta{ width:min(320px,100%); }
   .closing-btn{ justify-content:center; }
+  .closing-printmark{ width:72px; right:14px; bottom:14px; }
 }
 
 @media (prefers-reduced-motion:reduce){

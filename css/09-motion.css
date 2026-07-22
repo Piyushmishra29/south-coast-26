@@ -1,0 +1,103 @@
+/* ============================================================
+   09 — MOTION LAYER  (BKAS South Coast '26)
+   Headline rise · parallax · count-up · micro-interactions ·
+   section ambience · ticker polish.
+   Transform/opacity only. Everything below is gated behind
+   prefers-reduced-motion:no-preference, so reduced-motion users
+   fall back to the plain, static base.css layout untouched.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ---- 5. SECTION AMBIENCE : body cross-fades cream <-> paper ---- */
+  body { transition: background-color 1.2s ease; }
+  body.is-ambient { background-color: var(--paper); }
+
+  /* ---- 1. HEADLINE RISE : word / element masks ---- */
+  .motion-word,
+  .motion-unit {
+    display: inline-block;
+    overflow: hidden;
+    /* padding gives Shrikhand's ascenders/descenders room inside the
+       clip; equal negative margin keeps layout metrics unchanged. */
+    padding: 0.18em 0.03em;
+    margin: -0.18em -0.03em;
+  }
+  .motion-word-inner,
+  .motion-unit-inner {
+    display: inline-block;
+    transform: translateY(115%);
+    transition: transform .82s cubic-bezier(.19, 1, .22, 1);
+    will-change: transform;
+  }
+  .motion-h.in-view .motion-word-inner,
+  .motion-h.in-view .motion-unit-inner {
+    transform: translateY(0);
+  }
+  /* release will-change once settled to keep the compositor lean */
+  .motion-h.in-view { }
+
+  /* ---- 3. COUNT-UP chip : steady width while ticking ---- */
+  .motion-count { font-variant-numeric: tabular-nums; }
+
+  /* ---- 2. PARALLAX : bg layers + card photo drift (JS sets --motion-py) ---- */
+  .hero-bg,
+  .closing-bg {
+    transform: translate3d(0, var(--motion-py, 0px), 0) scale(1.08);
+  }
+  .spots-photo,
+  .themes-photo {
+    transform: translate3d(0, var(--motion-py, 0px), 0);
+  }
+
+  /* ---- 4. MICRO-INTERACTIONS ---- */
+
+  /* card hover: lift + gentle zine tilt */
+  .spots-card,
+  .themes-col,
+  .money-card {
+    transition: transform .45s cubic-bezier(.22, 1, .36, 1),
+                box-shadow .45s ease;
+  }
+  .spots-card:hover,
+  .themes-col:hover,
+  .money-card:hover {
+    transform: translateY(-8px) rotate(1.2deg);
+  }
+
+  /* inner photo scales up inside its clipped frame on card hover.
+     (parallax rides the container's --motion-py; the img keeps its
+     own transform slot so the two never collide.) */
+  .spots-photo img,
+  .themes-photo img {
+    transform: scale(var(--motion-ps, 1));
+    transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+  }
+  .spots-card:hover .spots-photo img,
+  .themes-col:hover .themes-photo img { --motion-ps: 1.04; }
+
+  /* star chip spins a quarter-turn on card hover */
+  .spots-chip {
+    transition: transform .5s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  .spots-card:hover .spots-chip { transform: rotate(90deg); }
+
+  /* springy pill press */
+  .pill {
+    transition: transform .25s cubic-bezier(.34, 1.56, .64, 1),
+                background .2s, color .2s;
+  }
+  .pill:active { transform: scale(.96); }
+
+  /* nav shrink-on-scroll (body.scrolled toggled by JS at >80px) */
+  .chrome-nav__pill {
+    transition: padding .35s ease, box-shadow .35s ease;
+  }
+  body.scrolled .chrome-nav__pill {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  /* ---- 6. TICKER : pause the marquee on hover ---- */
+  .hero-ticker:hover .hero-ticker-track { animation-play-state: paused; }
+}

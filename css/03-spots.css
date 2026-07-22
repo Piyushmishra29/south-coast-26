@@ -82,17 +82,40 @@
   flex:0 0 78vw;
   max-width:340px;
   scroll-snap-align:start;
+  position:relative;
 }
 
+/* photo frame: postage stamp — paper mount + punched perforation edge */
 .spots-photo{
   position:relative;
   aspect-ratio:4/5;
-  border-radius:var(--radius-lg);
-  overflow:hidden;
-  background:var(--cream-deep);
   box-shadow:var(--shadow);
 }
-.spots-photo img{
+.spots-card:nth-child(odd) .spots-photo{ transform:rotate(-1.1deg); }
+.spots-card:nth-child(even) .spots-photo{ transform:rotate(1.1deg); }
+
+.spots-stamp{
+  position:absolute;
+  inset:0;
+  padding:12px;
+  background:var(--paper);
+  border-radius:3px;
+}
+/* perforation: rows/columns of cream dots straddling the paper edge */
+.spots-stamp::before{
+  content:""; position:absolute; inset:-5px; pointer-events:none;
+  background:
+    radial-gradient(circle 5px at 10px 5px, var(--cream) 98%, transparent 100%) top left / 20px 10px repeat-x,
+    radial-gradient(circle 5px at 10px 5px, var(--cream) 98%, transparent 100%) bottom left / 20px 10px repeat-x;
+}
+.spots-stamp::after{
+  content:""; position:absolute; inset:-5px; pointer-events:none;
+  background:
+    radial-gradient(circle 5px at 5px 10px, var(--cream) 98%, transparent 100%) top left / 10px 20px repeat-y,
+    radial-gradient(circle 5px at 5px 10px, var(--cream) 98%, transparent 100%) top right / 10px 20px repeat-y;
+}
+.spots-stamp img{
+  display:block;
   width:100%; height:100%;
   object-fit:cover;
 }
@@ -111,9 +134,42 @@
   width:18px; height:18px;
 }
 
+/* nights/dates chip row — coral (villa nights) or forest (day-trip) */
+.spots-meta{
+  display:flex;
+  margin:16px 0 0;
+}
+.spots-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 10px;
+  border-radius:4px;
+  line-height:1.4;
+}
+.spots-tag.mono{ color:#fff; }
+.spots-tag--coral{ background:var(--coral); }
+.spots-tag--forest{ background:var(--forest); }
+
+.spots-name-row{ position:relative; }
+
 .spots-name{
   font-size:24px;
-  margin:16px 0 6px;
+  margin:10px 0 2px;
+}
+
+.spots-scribble{
+  position:absolute;
+  top:-16px; right:2px;
+  margin:0;
+  font-size:22px;
+  line-height:1;
+  color:var(--mustard);
+  transform:rotate(-7deg);
+  pointer-events:none;
+}
+
+.spots-coords{
+  margin:0 0 8px;
 }
 
 .spots-copy{

@@ -63,3 +63,16 @@ h1,h2,h3{ margin:0; }
   .pill{ transition:none; }
   *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; }
 }
+
+/* ===== R2 zine tokens & utilities ===== */
+@font-face{ font-family:'Caveat'; src:url('../assets/fonts/caveat.woff2') format('woff2'); font-weight:600; font-display:swap; }
+:root{
+  --paper:#F7EFDD; --coral:#EF3E2E; --acid:#ECE60F; --forest:#143D2A;
+  --mustard:#E7B335; --teal:#0E8A86; --sand:#E4D5BC; --plum:#7A3F52; --muted:#8A7A60;
+}
+.mono{
+  font-family:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+}
+.scribble{ font-family:'Caveat', cursive; font-weight:600; }
+.rule-dash{ border:none; border-top:2px dashed var(--sand); margin:0; }

@@ -1,0 +1,133 @@
+/* 055 — Real interactive map (real-geography sibling of the 05 route SVG) */
+.realmap{
+  background:var(--cream);
+  padding:96px 0 108px;
+}
+
+.realmap-label{
+  color:var(--terra);
+  margin:0 0 14px;
+}
+
+.realmap-title{
+  font-size:clamp(34px, 6vw, 58px);
+  margin:0 0 40px;
+  max-width:14ch;
+}
+
+/* ink border-frame card, echoing the route map card above it */
+.realmap-card{
+  background:var(--ink);
+  border-radius:var(--radius-lg);
+  padding:14px;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
+
+.realmap-map{
+  position:relative;
+  height:68vh;
+  min-height:420px;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--cream-deep);
+}
+
+/* pull the OSM tiles into the brand's warm film world */
+.realmap-map .leaflet-tile-pane{
+  filter:sepia(.25) saturate(.85) hue-rotate(-8deg);
+}
+
+/* loading placeholder + touch/zoom hint */
+.realmap-loading{
+  position:absolute; inset:0; z-index:1;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink); opacity:.55; margin:0;
+}
+.realmap-hint{
+  position:absolute; left:12px; bottom:12px; z-index:500;
+  margin:0; padding:6px 11px;
+  background:rgba(34,26,18,.82); color:var(--cream);
+  border-radius:999px;
+  opacity:0; transition:opacity .45s ease; pointer-events:none;
+}
+.realmap-map.is-ready .realmap-loading{ display:none; }
+.realmap-map.is-ready .realmap-hint{ opacity:.92; }
+.realmap-map.hint-hidden .realmap-hint{ opacity:0; }
+
+/* static fallback shown only if Leaflet fails to load/init */
+.realmap-fallback{
+  width:100%; height:auto;
+  border-radius:var(--radius);
+  background:var(--cream-deep);
+}
+
+.realmap-caption{
+  text-align:center;
+  margin:0;
+}
+
+/* ---- custom BKAS star pins ---- */
+.realmap-pin-wrap{ background:transparent; border:none; }
+.realmap-pin{
+  width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  background:var(--ink);
+  border:2px solid var(--cream);
+  box-shadow:0 4px 12px rgba(34,26,18,.4);
+}
+.realmap-pin svg{ width:19px; height:19px; display:block; }
+.realmap-pin--base{
+  width:42px; height:42px;
+  background:var(--terra);
+}
+.realmap-pin--base svg{ width:24px; height:24px; }
+.realmap-pin--air{ background:var(--forest); }
+
+/* ---- popup skinned into the brand ---- */
+.realmap .leaflet-popup-content-wrapper{
+  background:var(--cream); color:var(--ink);
+  border:2px solid var(--ink);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.realmap .leaflet-popup-tip{
+  background:var(--cream);
+  border:2px solid var(--ink);
+}
+.realmap .leaflet-popup-content{
+  margin:0;
+  width:196px !important;
+}
+.realmap-pop-img{
+  width:100%; height:112px;
+  object-fit:cover; display:block;
+}
+.realmap-pop-body{ padding:11px 15px 15px; }
+.realmap-pop-name{
+  font-family:var(--font-display); font-weight:400;
+  font-size:23px; line-height:1.02;
+  margin:0 0 7px; color:var(--ink);
+}
+.realmap-pop-meta{ margin:0; }
+.realmap .leaflet-container a.leaflet-popup-close-button{
+  color:var(--ink); padding:6px 6px 0 0;
+}
+
+/* attribution legible over cream tiles */
+.realmap .leaflet-control-attribution{
+  background:rgba(242,233,206,.86); color:var(--ink-soft);
+  font-size:10px;
+}
+.realmap .leaflet-control-attribution a{ color:var(--terra); }
+
+@media (max-width:760px){
+  .realmap{ padding:72px 0 84px; }
+  .realmap-map{ height:50vh; min-height:340px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .realmap-hint{ transition:none; }
+}

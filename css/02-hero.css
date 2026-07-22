@@ -1,4 +1,4 @@
-/* ── 02 HERO ── full-viewport aerial coast, cream copy, ink ticker ── */
+/* ── 02 HERO ── full-viewport aerial coast, cream copy, coral ticker, zine furniture ── */
 .hero{
   position:relative;
   min-height:92vh;
@@ -7,7 +7,7 @@
   justify-content:center;
   overflow:hidden;
   color:var(--cream);
-  padding:96px 0 76px; /* room for ticker at bottom */
+  padding:96px 0 88px; /* room for ticker + scribble at bottom */
 }
 
 .hero-bg{
@@ -23,14 +23,27 @@
   position:absolute; inset:0; z-index:1;
   background:
     linear-gradient(180deg,
-      rgba(34,26,18,.34) 0%,
-      rgba(34,26,18,.10) 26%,
+      rgba(34,26,18,.40) 0%,
+      rgba(34,26,18,.12) 26%,
       rgba(34,26,18,.28) 62%,
-      rgba(34,26,18,.72) 100%);
+      rgba(34,26,18,.74) 100%);
 }
 
 /* grain sits above scrim, below content */
 .hero.grain::after{ z-index:2; }
+
+/* ── zine metadata corners (typewriter furniture) ── */
+.hero-meta{
+  position:absolute; z-index:3;
+  top:26px;
+  color:var(--cream);
+  opacity:.82;
+  text-shadow:0 1px 10px rgba(34,26,18,.6);
+  margin:0;
+  pointer-events:none;
+}
+.hero-meta--tl{ left:26px; text-align:left; }
+.hero-meta--tr{ right:26px; text-align:right; }
 
 .hero-inner{
   position:relative; z-index:3;
@@ -46,11 +59,18 @@
 }
 
 .hero-title{
+  position:relative;
   color:var(--cream);
   font-size:clamp(44px, 8.4vw, 96px);
   max-width:15ch;
   margin:0 auto;
   text-shadow:0 3px 30px rgba(34,26,18,.42);
+}
+
+/* one accent word — acid is allowed on a dark photo ground */
+.hero-accent{
+  color:var(--acid);
+  text-shadow:0 3px 26px rgba(34,26,18,.5);
 }
 
 .hero-star{
@@ -62,6 +82,17 @@
   transform:translateY(.02em);
 }
 .hero-star svg{ fill:currentColor; filter:drop-shadow(0 2px 10px rgba(34,26,18,.4)); }
+
+/* rubber-stamp near the headline corner */
+.hero-stamp{
+  position:absolute;
+  right:-18px; bottom:-34px;
+  width:90px; height:auto;
+  opacity:.85;
+  transform:rotate(8deg);
+  filter:drop-shadow(0 4px 14px rgba(34,26,18,.4));
+  pointer-events:none;
+}
 
 .hero-sub{
   color:var(--cream);
@@ -79,12 +110,26 @@
 }
 .hero-btn--outline{ color:var(--cream); }
 
-/* ── bottom ticker strip ── */
+/* ── handwritten whisper above the ticker ── */
+.hero-scribble{
+  position:absolute; left:0; right:0; z-index:3;
+  bottom:64px;
+  text-align:center;
+  color:var(--cream);
+  font-size:26px;
+  line-height:1;
+  opacity:.9;
+  transform:rotate(-3deg);
+  text-shadow:0 2px 14px rgba(34,26,18,.6);
+  pointer-events:none;
+}
+
+/* ── bottom ticker strip — coral cover rule ── */
 .hero-ticker{
   position:absolute; left:0; right:0; bottom:0; z-index:3;
-  background:var(--ink);
+  background:var(--coral);
   color:var(--cream);
-  border-top:1px solid rgba(242,233,206,.14);
+  border-top:1px solid rgba(242,233,206,.2);
   overflow:hidden;
   white-space:nowrap;
 }
@@ -107,11 +152,18 @@
 }
 
 @media (max-width:640px){
-  .hero{ min-height:92vh; padding:88px 0 68px; }
+  .hero{ min-height:92vh; padding:84px 0 80px; }
   .hero-title{ font-size:clamp(40px, 12.5vw, 68px); }
   .hero-cta{ flex-direction:column; align-items:stretch; width:min(320px,100%); }
   .hero-btn{ justify-content:center; }
   .hero-ticker-group{ font-size:12px; letter-spacing:.16em; padding:13px 0; }
+
+  /* corners shrink + stack tighter on mobile */
+  .hero-meta{ top:16px; font-size:10px; letter-spacing:.1em; max-width:44vw; }
+  .hero-meta--tl{ left:14px; }
+  .hero-meta--tr{ right:14px; }
+  .hero-stamp{ width:66px; right:-6px; bottom:-26px; }
+  .hero-scribble{ font-size:22px; bottom:60px; }
 }
 
 @media (prefers-reduced-motion:reduce){

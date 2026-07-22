@@ -14,9 +14,12 @@
   <link rel="stylesheet" href="css/02-hero.css">
   <link rel="stylesheet" href="css/03-spots.css">
   <link rel="stylesheet" href="css/04-themes.css">
+  <link rel="stylesheet" href="css/045-stay.css">
   <link rel="stylesheet" href="css/05-route.css">
+  <link rel="stylesheet" href="css/055-map.css">
   <link rel="stylesheet" href="css/06-money.css">
   <link rel="stylesheet" href="css/07-closing.css">
+  <link rel="stylesheet" href="css/09-motion.css">
 </head>
 <body>
 <!-- ============ PRELOADER ============ -->
@@ -79,16 +82,21 @@
   <div class="hero-bg" role="img" aria-label="Aerial view of a surf-lined golden coastline in Sri Lanka"></div>
   <div class="hero-scrim" aria-hidden="true"></div>
 
+  <!-- zine typewriter furniture: metadata corners -->
+  <p class="mono hero-meta hero-meta--tl" aria-hidden="true">05&deg;58'N&nbsp;80&deg;25'E &mdash; South Coast, LK</p>
+  <p class="mono hero-meta hero-meta--tr" aria-hidden="true">Trip N&ordm;&nbsp;001 &middot; Issue Sept&nbsp;'26</p>
+
   <div class="wrap hero-inner">
     <p class="label hero-label reveal">Bro Knows A Spot &middot; Trip N&ordm;&nbsp;001</p>
 
     <h1 class="display hero-title reveal" data-delay="1">
-      The bro found the south coast<span class="hero-star" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" role="presentation" focusable="false"><path d="M12.00 1.00 L13.71 5.62 L17.50 2.47 L16.67 7.33 L21.53 6.50 L18.38 10.29 L23.00 12.00 L18.38 13.71 L21.53 17.50 L16.67 16.67 L17.50 21.53 L13.71 18.38 L12.00 23.00 L10.29 18.38 L6.50 21.53 L7.33 16.67 L2.47 17.50 L5.62 13.71 L1.00 12.00 L5.62 10.29 L2.47 6.50 L7.33 7.33 L6.50 2.47 L10.29 5.62 Z"/></svg></span>
+      The bro found the <span class="hero-accent">south</span> coast<span class="hero-star" aria-hidden="true"><svg viewBox="0 0 24 24" width="1em" height="1em" role="presentation" focusable="false"><path d="M12.00 1.00 L13.71 5.62 L17.50 2.47 L16.67 7.33 L21.53 6.50 L18.38 10.29 L23.00 12.00 L18.38 13.71 L21.53 17.50 L16.67 16.67 L17.50 21.53 L13.71 18.38 L12.00 23.00 L10.29 18.38 L6.50 21.53 L7.33 16.67 L2.47 17.50 L5.62 13.71 L1.00 12.00 L5.62 10.29 L2.47 6.50 L7.33 7.33 L6.50 2.47 L10.29 5.62 Z"/></svg></span>
+      <img class="hero-stamp" src="assets/zine/scribble-stamp.png" alt="" aria-hidden="true" width="90" height="90" loading="lazy" decoding="async">
     </h1>
 
     <p class="hero-sub reveal" data-delay="2">
-      Eight days down Sri Lanka&rsquo;s golden strip &mdash; Ahangama to Hiriketiya, four
-      villas, twenty-one seats. 1&ndash;8 September 2026.
+      Eight days down Sri Lanka&rsquo;s golden strip &mdash; Ahangama to Hiriketiya, three
+      villa bases, twenty-one seats. 1&ndash;8 September 2026.
     </p>
 
     <div class="hero-cta reveal" data-delay="3">
@@ -96,6 +104,9 @@
       <a class="pill pill--outline hero-btn hero-btn--outline" href="#route">See the route</a>
     </div>
   </div>
+
+  <!-- handwritten whisper (1 of only 2 on the page) -->
+  <p class="scribble hero-scribble reveal" data-delay="4" aria-hidden="true">scroll &mdash; it gets better &darr;</p>
 
   <div class="hero-ticker" aria-hidden="true">
     <div class="hero-ticker-track">
@@ -109,9 +120,9 @@
   <div class="wrap spots-wrap">
     <div class="spots-head">
       <div class="spots-head-text">
-        <p class="label">The Four Bases</p>
-        <h2 class="display spots-title">Four spots. One villa each.</h2>
-        <p class="spots-intro">We move down the coast and unpack once per base.</p>
+        <p class="label">The Four Spots</p>
+        <h2 class="display spots-title">Four spots. Three villas.</h2>
+        <p class="spots-intro">Three villas, four spots. We move down the coast — unpack, live, move on.</p>
       </div>
       <div class="spots-controls">
         <button class="spots-btn spots-btn--prev" type="button" aria-label="Previous spot" disabled>
@@ -127,42 +138,69 @@
       </div>
     </div>
 
-    <div class="spots-track" tabindex="0" role="group" aria-label="The four trip bases, scroll to browse">
+    <div class="spots-track" tabindex="0" role="group" aria-label="The four trip spots, scroll to browse">
       <div class="spots-list">
 
         <article class="spots-card reveal" data-delay="1">
           <div class="spots-photo grain">
-            <img src="assets/img/ahangama.jpg" alt="Turquoise reef bay at Ahangama, Sri Lanka" loading="lazy">
+            <div class="spots-stamp">
+              <img src="assets/img/ahangama.jpg" alt="Turquoise reef bay at Ahangama, Sri Lanka" loading="lazy">
+            </div>
             <span class="spots-chip"><img src="assets/brand/sunburst-star-icon-cream.svg" alt=""></span>
           </div>
+          <div class="spots-meta">
+            <span class="spots-tag spots-tag--coral mono">2 nights · Tue 01–Thu 03</span>
+          </div>
           <p class="display spots-name">01 · Ahangama</p>
+          <p class="spots-coords mono">05°58'N 80°21'E</p>
           <p class="spots-copy">Base camp. Reef breaks, slow mornings, the villa with the long table.</p>
         </article>
 
         <article class="spots-card reveal" data-delay="2">
           <div class="spots-photo grain">
-            <img src="assets/img/weligama.jpg" alt="Weligama bay with island, Sri Lanka" loading="lazy">
+            <div class="spots-stamp">
+              <img src="assets/img/weligama.jpg" alt="Weligama bay with island, Sri Lanka" loading="lazy">
+            </div>
             <span class="spots-chip"><img src="assets/brand/sunburst-star-icon-cream.svg" alt=""></span>
           </div>
+          <div class="spots-meta">
+            <span class="spots-tag spots-tag--coral mono">3 nights · The base · Thu 03–Sun 06</span>
+          </div>
           <p class="display spots-name">02 · Weligama</p>
+          <p class="spots-coords mono">05°58'N 80°25'E</p>
           <p class="spots-copy">The learning bay. Everyone stands up on a wave by sunset. Surf lesson included.</p>
         </article>
 
         <article class="spots-card reveal" data-delay="3">
           <div class="spots-photo grain">
-            <img src="assets/img/mirissa.jpg" alt="Colorful fishing boats in Mirissa harbour, Sri Lanka" loading="lazy">
+            <div class="spots-stamp">
+              <img src="assets/img/mirissa.jpg" alt="Colorful fishing boats in Mirissa harbour, Sri Lanka" loading="lazy">
+            </div>
             <span class="spots-chip"><img src="assets/brand/sunburst-star-icon-cream.svg" alt=""></span>
           </div>
+          <div class="spots-meta">
+            <span class="spots-tag spots-tag--forest mono">Day trips from base</span>
+          </div>
           <p class="display spots-name">03 · Mirissa</p>
+          <p class="spots-coords mono">05°56'N 80°27'E</p>
           <p class="spots-copy">Harbour color and the loudest nights of the trip.</p>
         </article>
 
         <article class="spots-card reveal" data-delay="1">
           <div class="spots-photo grain">
-            <img src="assets/img/hiriketiya.jpg" alt="Yellow boat on the horseshoe cove at Hiriketiya, Sri Lanka" loading="lazy">
+            <div class="spots-stamp">
+              <img src="assets/img/hiriketiya.jpg" alt="Yellow boat on the horseshoe cove at Hiriketiya, Sri Lanka" loading="lazy">
+            </div>
             <span class="spots-chip"><img src="assets/brand/sunburst-star-icon-cream.svg" alt=""></span>
           </div>
-          <p class="display spots-name">04 · Hiriketiya</p>
+          <div class="spots-meta">
+            <span class="spots-tag spots-tag--coral mono">2 nights · Sun 06–Tue 08</span>
+          </div>
+          <div class="spots-name-row">
+            <p class="display spots-name">04 · Hiriketiya</p>
+            <p class="scribble spots-scribble" aria-hidden="true">save the best for last</p>
+          </div>
+          <p class="spots-coords mono">05°58'N 80°41'E</p>
           <p class="spots-copy">The horseshoe cove. Jungle meets swell. We end here on purpose.</p>
         </article>
 
@@ -172,6 +210,7 @@
 </section>
 
 <section id="themes" class="themes">
+  <p class="mono themes-mono reveal">Chapters 01&ndash;03 &middot; The Shape Of The Week</p>
   <div class="wrap themes-inner">
     <header class="themes-head">
       <p class="label themes-eyebrow reveal">The Shape Of The Week</p>
@@ -179,32 +218,83 @@
     </header>
 
     <div class="themes-grid">
-      <article class="themes-col reveal" data-delay="1">
+      <article class="themes-col themes-col--party reveal" data-delay="1">
         <div class="themes-photo grain">
           <img src="assets/img/party.jpg" alt="Silhouetted crowd dancing at a sunset beach party in Mirissa" loading="lazy">
         </div>
         <h3 class="display themes-col-title">Party</h3>
+        <p class="mono themes-col-tag">Sunset &rarr; 3am</p>
         <p class="themes-col-copy">Sunset sessions that turn into 3am ones. Mirissa's strip, villa decks, and one night nobody will describe accurately.</p>
       </article>
 
-      <article class="themes-col reveal" data-delay="2">
+      <article class="themes-col themes-col--self reveal" data-delay="2">
         <div class="themes-photo grain">
           <img src="assets/img/self.jpg" alt="Spa candles and smooth stones arranged for a quiet self-care session" loading="lazy">
         </div>
         <h3 class="display themes-col-title">Self</h3>
+        <p class="mono themes-col-tag">Spa &middot; Sauna &middot; Ice</p>
         <p class="themes-col-copy">One luxury spa session, one sauna and ice bath, and mornings with nothing scheduled. Come back different, or at least well-rested.</p>
       </article>
 
-      <article class="themes-col reveal" data-delay="3">
+      <article class="themes-col themes-col--nature reveal" data-delay="3">
         <div class="themes-photo grain">
           <img src="assets/img/nature.jpg" alt="A jungle stream running through Sri Lanka's green interior" loading="lazy">
         </div>
         <h3 class="display themes-col-title">Nature</h3>
+        <p class="mono themes-col-tag">One Hour Inland</p>
         <p class="themes-col-copy">Jungle streams, reef walks, the green interior an hour inland. The coast is the headline; this is the fine print worth reading.</p>
       </article>
     </div>
 
     <p class="label themes-footer reveal">One Of Each Is Included. The Rest Is Up To You.</p>
+  </div>
+</section>
+
+<section id="stay" class="stay" aria-label="The villas and at-a-glance trip facts">
+  <div class="wrap stay-inner">
+
+    <p class="mono stay-kicker reveal">THE STAY &middot; THREE VILLAS &middot; 24 BEDS</p>
+
+    <div class="stay-grid">
+      <div class="stay-photo-col reveal">
+        <div class="stay-photo grain">
+          <img src="assets/img/stay.jpg" alt="Purple sunset over a villa pool lined with palm trees" loading="lazy">
+        </div>
+      </div>
+
+      <div class="stay-copy-col reveal" data-delay="1">
+        <h2 class="display stay-title">Whole villas. Long tables.</h2>
+        <p class="stay-copy">Big shared villas, around twelve bedrooms each, in Ahangama, Weligama and Hiriketiya. Everyone under one roof, not scattered across hotel floors. A pool to fall into, long-table dinners nobody planned, and decks that quietly become the afterparty.</p>
+        <hr class="rule-dash stay-rule">
+        <p class="mono stay-facts">AHANGAMA 2N &middot; WELIGAMA 3N (BASE) &middot; HIRIKETIYA 2N</p>
+      </div>
+    </div>
+
+    <div class="stay-glance">
+      <div class="stay-stat reveal" data-delay="1">
+        <p class="display stay-stat-num">8 days</p>
+        <p class="label stay-stat-label">On the ground</p>
+      </div>
+      <div class="stay-stat reveal" data-delay="2">
+        <p class="display stay-stat-num">4 spots</p>
+        <p class="label stay-stat-label">Coast towns</p>
+      </div>
+      <div class="stay-stat reveal" data-delay="3">
+        <p class="display stay-stat-num">3 villas</p>
+        <p class="label stay-stat-label">One roof each</p>
+      </div>
+      <div class="stay-stat reveal" data-delay="3">
+        <p class="display stay-stat-num">21 seats</p>
+        <p class="label stay-stat-label">Whole trip</p>
+      </div>
+    </div>
+
+    <div class="stay-transport reveal">
+      <img class="stay-transport-img" src="assets/zine/tuk-print.png" alt="Illustrated print of a red tuk-tuk" loading="lazy" width="90">
+      <p class="stay-transport-copy">Scooters under everyone all week. Tuk-tuks on move days. Airport both ways.</p>
+      <p class="mono stay-transport-mono">CMB &rarr; AHANGAMA &middot; 2H40 BY VAN</p>
+    </div>
+
   </div>
 </section>
 
@@ -264,17 +354,37 @@
   </div>
 </section>
 
+<section id="realmap" class="realmap" aria-label="Interactive map of the real route">
+  <div class="wrap">
+    <p class="label realmap-label reveal">The Actual Map</p>
+    <h2 class="display realmap-title reveal" data-delay="1">Pin it. It&rsquo;s real.</h2>
+
+    <div class="realmap-card reveal" data-delay="2">
+      <div class="realmap-map" id="realmap-canvas" role="application"
+           aria-label="Interactive map of the south coast route from Colombo airport to Hiriketiya">
+        <p class="realmap-loading mono">Loading map</p>
+        <p class="realmap-hint mono" aria-hidden="true">Click to zoom &middot; two fingers to move</p>
+      </div>
+      <img class="realmap-fallback" src="assets/img/route_map.svg" width="1180" height="430" hidden
+           alt="Static map of Sri Lanka's south coast route from Colombo airport through Ahangama, Weligama and Mirissa to Hiriketiya">
+    </div>
+
+    <p class="mono realmap-caption">OpenStreetMap &middot; Route as driven &middot; 160km of coast</p>
+  </div>
+</section>
+
 <section id="money" class="money" aria-label="What's included and the money">
 
   <div class="money-a">
     <div class="wrap">
       <header class="money-head">
+        <p class="mono money-kicker reveal">The Money &middot; No Surprises &middot; FX &#8377;1 &asymp; LKR 3.30</p>
         <p class="label money-label reveal">Straight talk</p>
-        <h2 class="display money-title reveal" data-delay="1">&#8377;50,000. Here&rsquo;s exactly what that buys.</h2>
+        <h2 class="display money-title reveal" data-delay="1"><span class="money-title-accent">&#8377;50,000.</span> Here&rsquo;s exactly what that buys.</h2>
       </header>
 
       <div class="money-cards">
-        <div class="money-card reveal" data-delay="1">
+        <div class="money-card money-card--in reveal" data-delay="1">
           <h3 class="money-card-title">In the price</h3>
           <ul class="money-list money-list--in">
             <li><span class="money-mark" aria-hidden="true">&#10022;</span>Four villas, ~12 bedrooms each</li>
@@ -285,9 +395,11 @@
             <li><span class="money-mark" aria-hidden="true">&#10022;</span>One surf lesson</li>
             <li><span class="money-mark" aria-hidden="true">&#10022;</span>One sauna + ice bath</li>
           </ul>
+          <hr class="rule-dash money-card-rule">
+          <p class="mono money-card-foot">First Paid &middot; First Confirmed</p>
         </div>
 
-        <div class="money-card reveal" data-delay="2">
+        <div class="money-card money-card--out reveal" data-delay="2">
           <h3 class="money-card-title">On you</h3>
           <ul class="money-list money-list--out">
             <li><span class="money-mark" aria-hidden="true">&#10005;</span>All food and meals</li>
@@ -306,6 +418,7 @@
       <h2 class="display money-b-title reveal">Twenty-one seats. That&rsquo;s the whole trip.</h2>
       <p class="money-b-sub reveal" data-delay="1">1&ndash;8 September 2026 &middot; &#8377;50,000 a head &middot; first paid, first confirmed</p>
       <a class="pill pill--cream money-b-btn reveal" data-delay="2" href="https://wa.me/919063492584?text=I%20want%20a%20seat%20on%20South%20Coast%20%2726" target="_blank" rel="noopener">Claim a seat</a>
+      <p class="mono money-b-seat reveal" data-delay="3">Seat N&ordm; __ Of 21</p>
     </div>
   </div>
 
@@ -316,6 +429,8 @@
   <div class="closing-scrim" aria-hidden="true"></div>
 
   <div class="wrap closing-inner">
+    <p class="mono closing-mono reveal">Back Cover &middot; South Coast &rsquo;26 &middot; Printed Slightly Wrong On Purpose</p>
+
     <img class="closing-star reveal" src="assets/brand/sunburst-star-icon-cream.svg" alt="" aria-hidden="true" width="54" height="54" />
 
     <h2 class="display closing-title reveal" data-delay="1">You weren&rsquo;t going to say no.</h2>
@@ -327,6 +442,8 @@
       <p class="label closing-label">Worth the detour.</p>
     </div>
   </div>
+
+  <img class="closing-printmark reveal" src="assets/zine/lighthouse-print.png" alt="" aria-hidden="true" width="110" />
 </section>
 
 
@@ -349,6 +466,9 @@
 
 <script src="js/site.js" defer></script>
 <script src="js/01-chrome.js" defer></script>
+<script src="js/02-hero.js" defer></script>
 <script src="js/03-spots.js" defer></script>
+<script src="js/055-map.js" defer></script>
+<script src="js/09-motion.js" defer></script>
 </body>
 </html>
