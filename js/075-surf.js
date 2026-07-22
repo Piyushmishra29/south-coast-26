@@ -83,10 +83,18 @@
   }
 
   /* ---------- expand / collapse ---------- */
+  var hideTimer = null;
   function setExpanded(open) {
-    root.setAttribute('data-state', open ? 'expanded' : 'collapsed');
     pill.setAttribute('aria-expanded', open ? 'true' : 'false');
-    card.hidden = !open;
+    if (open) {
+      clearTimeout(hideTimer);
+      card.hidden = false;
+      void card.offsetHeight; // reflow so the entrance transition actually runs
+      root.setAttribute('data-state', 'expanded');
+    } else {
+      root.setAttribute('data-state', 'collapsed');
+      hideTimer = setTimeout(function () { card.hidden = true; }, 480);
+    }
     if (open) {
       document.addEventListener('keydown', onKey);
       document.addEventListener('click', onOutside, true);
