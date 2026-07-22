@@ -4,7 +4,7 @@
    ============================================================ */
 .brand{
   background:var(--ink); color:var(--cream);
-  overflow:hidden;
+  overflow:visible; /* the stamp straddles the top edge; marquee clips itself */
   padding:104px 0 116px;
   position:relative;
 }
@@ -15,12 +15,16 @@
   padding:0 22px 56px;
   text-align:center;
 }
+/* stamp: straddles the boundary with the terracotta band above, tilted like it
+   was pressed on by hand */
 .brand-seal{
-  width:130px; height:auto;
-  animation:brand-spin 60s linear infinite;
-  will-change:transform;
+  position:absolute;
+  top:0; left:12%;
+  width:150px; height:auto;
+  transform:translateY(-52%) rotate(-12deg);
+  opacity:.96;
+  z-index:5;
 }
-@keyframes brand-spin{ to{ transform:rotate(360deg); } }
 
 .brand-meta{
   color:var(--cream); opacity:.62; margin:0;

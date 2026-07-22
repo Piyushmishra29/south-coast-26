@@ -8,6 +8,17 @@
   if (navigator.connection && navigator.connection.saveData) return;
 
   var VIDEO = mount.getAttribute('data-video');
+
+  // best-effort: bias YouTube toward the highest available rendition
+  function requestMaxQuality(p) {
+    try {
+      var levels = ['highres', 'hd2160', 'hd1440', 'hd1080', 'hd720'];
+      var avail = (p.getAvailableQualityLevels && p.getAvailableQualityLevels()) || [];
+      for (var i = 0; i < levels.length; i++) {
+        if (!avail.length || avail.indexOf(levels[i]) !== -1) { p.setPlaybackQuality(levels[i]); break; }
+      }
+    } catch (err) {}
+  }
   var START = parseInt(mount.getAttribute('data-start') || '0', 10);
   var player = null;
 
@@ -22,11 +33,13 @@
       events: {
         onReady: function (e) {
           e.target.mute();
+          requestMaxQuality(e.target);
           e.target.playVideo();
         },
         onStateChange: function (e) {
           if (e.data === YT.PlayerState.PLAYING) {
             shell.classList.add('is-playing');
+            requestMaxQuality(e.target);
           } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
             // never show YouTube's paused chrome — fade to the poster photo
             shell.classList.remove('is-playing');

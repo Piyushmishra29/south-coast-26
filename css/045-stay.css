@@ -124,3 +124,18 @@
 @media (max-width:520px){
   .stay-photo{ box-shadow:6px 6px 0 0 var(--mustard); margin:0 4px 10px 0; }
 }
+
+/* cream seal pressed over the photo's top-right corner, stamp-style */
+.stay-grid{ position:relative; }
+.stay-seal{
+  position:absolute;
+  top:-32px; left:44%;
+  width:116px; height:auto;
+  transform:rotate(10deg);
+  opacity:.96;
+  z-index:4;
+  pointer-events:none;
+}
+@media (max-width:900px){
+  .stay-seal{ left:auto; right:2px; top:-26px; width:92px; }
+}
