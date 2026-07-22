@@ -38,17 +38,37 @@
         },
         onStateChange: function (e) {
           if (e.data === YT.PlayerState.PLAYING) {
-            shell.classList.add('is-playing');
+            // small delay so real frames are rendering before we crossfade in
+            setTimeout(function () { shell.classList.add('is-playing'); }, 250);
             requestMaxQuality(e.target);
-          } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
-            // never show YouTube's paused chrome — fade to the poster photo
+            startLoopWatch(e.target);
+          } else if (e.data === YT.PlayerState.ENDED) {
+            // backup only — the loop watcher should restart us before this fires.
+            // keep the video layer up: no fade, straight back to the start point.
+            e.target.seekTo(START, true);
+            e.target.playVideo();
+          } else if (e.data === YT.PlayerState.PAUSED) {
+            // genuine pause (tab switch etc): fade to poster, never show YT chrome
             shell.classList.remove('is-playing');
-            if (e.data === YT.PlayerState.ENDED) e.target.seekTo(START, true);
             setTimeout(function () { try { e.target.playVideo(); } catch (err) {} }, 150);
           }
         }
       }
     });
+  }
+
+  // seamless loop: jump back to START just before the end so YouTube never
+  // reaches its end state (no end screen, no fade, no frame flash)
+  var loopTimer = null;
+  function startLoopWatch(p) {
+    if (loopTimer) return;
+    loopTimer = setInterval(function () {
+      try {
+        if (p.getPlayerState() !== YT.PlayerState.PLAYING) return;
+        var d = p.getDuration();
+        if (d && p.getCurrentTime() > d - 0.7) p.seekTo(START, true);
+      } catch (err) {}
+    }, 300);
   }
 
   // resume after tab switch / phone unlock instead of sitting on YT's paused UI
