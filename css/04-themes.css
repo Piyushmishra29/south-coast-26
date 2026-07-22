@@ -1,0 +1,75 @@
+/* BKAS South Coast '26 — Themes triptych (Party · Self · Nature) */
+.themes{
+  background:var(--ink);
+  color:var(--cream);
+  padding:110px 0 100px;
+}
+
+.themes-head{
+  text-align:center;
+  max-width:640px;
+  margin:0 auto 64px;
+}
+.themes-eyebrow{
+  color:var(--cream);
+  opacity:.65;
+  margin:0 0 16px;
+}
+.themes-title{
+  font-size:clamp(34px, 6vw, 64px);
+  color:var(--cream);
+}
+.themes-accent{ color:var(--terra); }
+
+.themes-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:44px 32px;
+}
+
+.themes-col{ text-align:center; }
+
+.themes-photo{
+  aspect-ratio:4 / 5;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin:0 0 22px;
+  box-shadow:var(--shadow);
+}
+.themes-photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+}
+
+.themes-col-title{
+  font-size:24px;
+  color:var(--cream);
+  margin:0 0 12px;
+}
+
+.themes-col-copy{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--cream);
+  opacity:.82;
+  max-width:34ch;
+  margin:0 auto;
+}
+
+.themes-footer{
+  text-align:center;
+  color:var(--cream);
+  opacity:.6;
+  margin:60px 0 0;
+}
+
+@media (max-width: 860px){
+  .themes{ padding:80px 0 70px; }
+  .themes-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+    max-width:420px;
+    margin:0 auto;
+  }
+  .themes-head{ margin-bottom:48px; }
+}

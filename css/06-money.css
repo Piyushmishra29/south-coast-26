@@ -1,0 +1,74 @@
+/* BKAS South Coast '26 — 06 what's included + the money */
+
+.money{ background:var(--cream); }
+
+/* --- Part A: cream ground, two cards --- */
+.money-a{ padding:96px 0 88px; }
+
+.money-head{ max-width:680px; margin:0 auto 48px; text-align:center; }
+.money-label{ color:var(--terra); display:block; margin-bottom:14px; }
+.money-title{ font-size:clamp(32px, 5.2vw, 52px); font-variant-numeric:tabular-nums; }
+
+.money-cards{
+  display:grid; grid-template-columns:1fr 1fr; gap:24px;
+  max-width:920px; margin:0 auto;
+}
+@media (max-width:760px){
+  .money-cards{ grid-template-columns:1fr; }
+}
+
+.money-card{
+  background:var(--cream-deep);
+  border:1px solid rgba(34,26,18,.1);
+  border-radius:var(--radius-lg);
+  padding:36px 32px;
+}
+
+.money-card-title{
+  font-family:var(--font-body); font-weight:800; font-size:13px;
+  letter-spacing:.18em; text-transform:uppercase; margin:0 0 20px;
+}
+
+.money-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.money-list li{
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:16.5px; line-height:1.4;
+}
+.money-mark{
+  flex:0 0 auto; font-size:15px; line-height:1.4; margin-top:1px;
+}
+.money-list--in .money-mark{ color:var(--terra); }
+.money-list--out .money-mark{ color:var(--terra); font-weight:800; }
+.money-list--out li{ color:var(--ink-soft); }
+
+.money-honest{
+  margin:22px 0 0; padding-top:18px;
+  border-top:1px solid rgba(34,26,18,.1);
+  font-weight:700; font-size:15px; line-height:1.5;
+}
+
+/* --- Part B: terracotta full-bleed band --- */
+.money-b{
+  background:var(--terra); color:var(--cream);
+  padding:80px 0;
+}
+
+.money-b-inner{ text-align:center; max-width:640px; margin:0 auto; }
+
+.money-b-title{
+  font-size:clamp(30px, 5vw, 48px); color:var(--cream); margin-bottom:16px;
+}
+
+.money-b-sub{
+  font-size:16px; font-weight:600; letter-spacing:.01em;
+  font-variant-numeric:tabular-nums;
+  opacity:.92; margin:0 0 32px;
+}
+
+.money-b-btn{ font-size:14px; }
+
+@media (max-width:520px){
+  .money-a{ padding:72px 0 64px; }
+  .money-b{ padding:64px 0; }
+  .money-card{ padding:28px 24px; }
+}

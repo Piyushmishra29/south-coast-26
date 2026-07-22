@@ -1,0 +1,86 @@
+/* ── 07 CLOSING ── full-bleed sunset CTA, cream copy, dark-to-transparent scrim ── */
+.closing{
+  position:relative;
+  min-height:80vh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+  color:var(--cream);
+  padding:96px 0 88px;
+}
+
+.closing-bg{
+  position:absolute; inset:0;
+  background:url('../assets/img/closing.jpg') center 46% / cover no-repeat;
+  background-color:var(--ink);
+  transform:scale(1.04);
+  z-index:0;
+}
+
+/* legibility floor at the bottom, transparent up top so the photo breathes */
+.closing-scrim{
+  position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(0deg,
+      rgba(34,26,18,.82) 0%,
+      rgba(34,26,18,.44) 34%,
+      rgba(34,26,18,.06) 62%,
+      rgba(34,26,18,0) 100%);
+}
+
+.closing.grain::after{ z-index:2; }
+
+.closing-inner{
+  position:relative; z-index:3;
+  text-align:center;
+  display:flex; flex-direction:column; align-items:center;
+}
+
+.closing-star{
+  width:54px; height:54px;
+  margin-bottom:20px;
+  filter:drop-shadow(0 3px 16px rgba(34,26,18,.45));
+}
+
+.closing-title{
+  color:var(--cream);
+  font-size:clamp(38px, 7vw, 80px);
+  max-width:16ch;
+  margin:0 auto;
+  text-shadow:0 3px 30px rgba(34,26,18,.45);
+}
+
+.closing-sub{
+  font-family:var(--font-body);
+  color:var(--cream);
+  font-size:clamp(16px, 2.2vw, 19px);
+  line-height:1.55;
+  max-width:44ch;
+  margin:22px auto 0;
+  text-shadow:0 1px 16px rgba(34,26,18,.55);
+}
+
+.closing-cta{
+  display:flex; flex-direction:column; align-items:center; gap:16px;
+  margin-top:38px;
+}
+
+.closing-label{
+  color:var(--cream);
+  opacity:.92;
+  margin:0;
+  text-shadow:0 1px 14px rgba(34,26,18,.5);
+}
+
+@media (max-width:640px){
+  .closing{ min-height:82vh; padding:80px 0 64px; }
+  .closing-star{ width:44px; height:44px; margin-bottom:16px; }
+  .closing-title{ font-size:clamp(36px, 11vw, 56px); }
+  .closing-cta{ width:min(320px,100%); }
+  .closing-btn{ justify-content:center; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .closing-bg{ transform:none; }
+}

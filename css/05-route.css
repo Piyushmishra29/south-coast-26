@@ -1,0 +1,85 @@
+/* 05 — Route + itinerary */
+.route{
+  background:var(--cream);
+  padding:96px 0 108px;
+}
+
+.route-label{
+  color:var(--terra);
+  margin:0 0 14px;
+}
+
+.route-title{
+  font-size:clamp(34px, 6vw, 58px);
+  margin:0 0 40px;
+  max-width:14ch;
+}
+
+/* map card */
+.route-map-card{
+  background:var(--ink);
+  border-radius:var(--radius-lg);
+  padding:18px 18px 16px;
+  box-shadow:var(--shadow);
+  margin-bottom:56px;
+}
+
+.route-map-img{
+  width:100%;
+  height:auto;
+  border-radius:var(--radius);
+  background:var(--cream-deep);
+}
+
+.route-map-caption{
+  color:var(--cream);
+  opacity:.82;
+  margin:14px 4px 2px;
+  text-align:center;
+}
+
+/* day strip */
+.route-days{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:22px;
+}
+
+.route-day{
+  padding:18px 0 4px;
+  border-top:2px solid var(--ink);
+}
+
+.route-day-num{
+  display:block;
+  font-size:20px;
+  color:var(--terra);
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.route-day-label{
+  margin:0 0 6px;
+  font-weight:800;
+  font-size:15px;
+}
+
+.route-day-desc{
+  margin:0;
+  font-size:14px;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+
+@media (min-width:760px){
+  .route-days{
+    grid-template-columns:repeat(8, 1fr);
+    gap:16px;
+  }
+  .route-day{
+    padding-top:16px;
+  }
+}
