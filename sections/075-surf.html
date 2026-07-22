@@ -1,0 +1,60 @@
+<!-- FLOATING LIVE SURF WIDGET — Weligama · hidden until data loads (js/075-surf.js) -->
+<div id="surf" class="surf" data-state="collapsed" hidden>
+
+  <!-- Expanded card: springs open above the pill -->
+  <div id="surf-card" class="surf-card grain" role="dialog" aria-modal="false"
+       aria-label="Live surf conditions for Weligama" hidden>
+
+    <!-- 12-point terracotta corner star -->
+    <svg class="surf-star" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+      <polygon fill="var(--terra)" points="12,1 13.2,7.6 17.5,2.5 15.2,8.8 21.5,6.5 16.4,10.8 23,12 16.4,13.2 21.5,17.5 15.2,15.2 17.5,21.5 13.2,16.4 12,23 10.8,16.4 6.5,21.5 8.8,15.2 2.5,17.5 7.6,13.2 1,12 7.6,10.8 2.5,6.5 8.8,8.8 6.5,2.5 10.8,7.6"/>
+    </svg>
+
+    <header class="surf-head">
+      <span class="mono surf-head-txt">Surf Check &middot; Weligama &middot; Live</span>
+      <span class="surf-dot" aria-hidden="true"></span>
+    </header>
+
+    <div class="surf-hero-row">
+      <span class="surf-wave-big display" data-field="wave">&mdash;</span>
+      <div class="surf-chips">
+        <span class="mono surf-chip" data-field="period">&mdash;</span>
+        <span class="mono surf-chip" data-field="sst">&mdash;</span>
+      </div>
+    </div>
+
+    <div class="surf-meta-row">
+      <span class="surf-meta"><span class="mono surf-meta-k">Air</span><span class="surf-meta-v" data-field="air">&mdash;</span></span>
+      <span class="surf-meta surf-meta--wind">
+        <span class="mono surf-meta-k">Wind</span>
+        <span class="surf-meta-v" data-field="wind">&mdash;</span>
+        <svg class="surf-windarrow" data-field="windarrow" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+          <path d="M8 1 L11.2 9 L8 7 L4.8 9 Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="surf-tide">
+      <svg class="surf-tidearrow" data-field="tidearrow" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false">
+        <path d="M6 1 L10 7 L2 7 Z" fill="currentColor"/>
+      </svg>
+      <span class="surf-tide-state mono" data-field="tidestate">&mdash;</span>
+      <span class="surf-tide-times mono" data-field="tides">&mdash;</span>
+    </div>
+
+    <footer class="mono surf-foot" data-field="foot">Open-Meteo</footer>
+  </div>
+
+  <!-- Collapsed pill (default trigger) -->
+  <button class="surf-pill" type="button" aria-expanded="false" aria-controls="surf-card"
+          aria-label="Open live surf check for Weligama">
+    <svg class="surf-squiggle" viewBox="0 0 46 26" width="46" height="26" aria-hidden="true" focusable="false">
+      <path class="surf-sq surf-sq--1" d="M-4 13 Q6 4 16 13 T36 13 T56 13" />
+      <path class="surf-sq surf-sq--2" d="M-4 17 Q6 9 16 17 T36 17 T56 17" />
+      <path class="surf-sq surf-sq--3" d="M-4 9 Q6 1 16 9 T36 9 T56 9" />
+    </svg>
+    <span class="surf-pill-h display" data-field="wave">&mdash;</span>
+    <span class="surf-pill-loc mono">Weligama</span>
+  </button>
+
+</div>

@@ -1,0 +1,111 @@
+/* ===== FLOATING LIVE SURF WIDGET — Weligama ===== */
+
+.surf{
+  position:fixed;
+  right:20px; bottom:20px;
+  z-index:60;                 /* above content, below preloader (100) */
+  font-family:var(--font-body);
+  /* spring-in when data lands: js sets [hidden]=false then .surf--live */
+  opacity:0; transform:translateY(14px) scale(.94);
+  transition:opacity .5s ease, transform .55s cubic-bezier(.34,1.56,.64,1);
+}
+.surf--live{ opacity:1; transform:none; }
+
+/* ---- collapsed pill ---- */
+.surf-pill{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--ink); color:var(--cream);
+  border:none; cursor:pointer;
+  padding:11px 18px 11px 14px;
+  border-radius:999px;
+  box-shadow:0 12px 34px rgba(34,26,18,.32);
+  font:inherit; -webkit-tap-highlight-color:transparent;
+  animation:surf-bob 3s ease-in-out infinite;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+}
+.surf-pill:hover{ transform:scale(1.05); box-shadow:0 16px 40px rgba(34,26,18,.4); }
+.surf-pill:focus-visible{ outline:2px solid var(--marigold); outline-offset:3px; }
+/* pill hides while card is open */
+.surf[data-state="expanded"] .surf-pill{ animation:none; opacity:0; transform:scale(.9); pointer-events:none; }
+
+.surf-squiggle{ overflow:visible; flex:none; }
+.surf-sq{ fill:none; stroke:var(--teal); stroke-width:2.4; stroke-linecap:round; }
+.surf-sq--1{ stroke:var(--marigold); animation:surf-drift 3.2s linear infinite; }
+.surf-sq--2{ stroke:var(--terra); opacity:.9; animation:surf-drift 4.1s linear infinite; }
+.surf-sq--3{ stroke:var(--teal); opacity:.7; animation:surf-drift 2.6s linear infinite; }
+
+.surf-pill-h{ font-size:22px; line-height:1; color:var(--cream); }
+.surf-pill-loc{ color:var(--cream); opacity:.66; font-size:9.5px; letter-spacing:.2em; }
+
+/* ---- expanded card ---- */
+.surf-card{
+  position:absolute; right:0; bottom:calc(100% + 12px);
+  width:300px; max-width:calc(100vw - 40px);
+  background:var(--ink); color:var(--cream);
+  border-radius:var(--radius-lg);
+  padding:20px 20px 16px;
+  box-shadow:0 24px 60px rgba(34,26,18,.5);
+  transform-origin:bottom right;
+  /* closed state */
+  opacity:0; transform:translateY(10px) scale(.9); pointer-events:none;
+  transition:opacity .28s ease, transform .42s cubic-bezier(.34,1.56,.64,1);
+}
+.surf[data-state="expanded"] .surf-card{ opacity:1; transform:none; pointer-events:auto; }
+
+.surf-star{ position:absolute; top:-11px; left:-11px; filter:drop-shadow(0 3px 6px rgba(34,26,18,.4)); }
+
+.surf-head{ display:flex; align-items:center; gap:8px; }
+.surf-head-txt{ color:var(--cream); opacity:.78; }
+.surf-dot{
+  width:8px; height:8px; border-radius:50%; background:var(--coral);
+  box-shadow:0 0 0 0 rgba(239,62,46,.55);
+  animation:surf-pulse 1.8s ease-out infinite;
+}
+
+.surf-hero-row{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-top:12px; }
+.surf-wave-big{ font-size:44px; line-height:.9; color:var(--cream); }
+.surf-chips{ display:flex; flex-direction:column; gap:6px; align-items:flex-end; }
+.surf-chip{
+  background:rgba(242,233,206,.1); color:var(--cream);
+  padding:5px 9px; border-radius:999px; white-space:nowrap;
+  border:1px solid rgba(242,233,206,.16);
+}
+
+.surf-meta-row{ display:flex; gap:22px; margin-top:16px; padding-top:14px; border-top:1px dashed rgba(242,233,206,.2); }
+.surf-meta{ display:flex; align-items:center; gap:7px; }
+.surf-meta-k{ opacity:.6; color:var(--cream); }
+.surf-meta-v{ font-weight:800; font-size:15px; letter-spacing:.01em; }
+.surf-windarrow{ color:var(--marigold); transition:transform .4s ease; }
+
+.surf-tide{ display:flex; align-items:center; gap:8px; margin-top:14px; }
+.surf-tidearrow{ color:var(--teal); flex:none; }
+.surf-tidearrow[data-dir="falling"]{ transform:rotate(180deg); }
+.surf-tide-state{ color:var(--marigold); letter-spacing:.16em; }
+.surf-tide-times{ color:var(--cream); opacity:.82; letter-spacing:.1em; }
+
+.surf-foot{ margin-top:14px; opacity:.5; color:var(--cream); font-size:9.5px; }
+
+/* ---- keyframes ---- */
+@keyframes surf-bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+@keyframes surf-drift{ from{ transform:translateX(0); } to{ transform:translateX(-20px); } }
+@keyframes surf-pulse{
+  0%{ box-shadow:0 0 0 0 rgba(239,62,46,.55); }
+  70%{ box-shadow:0 0 0 8px rgba(239,62,46,0); }
+  100%{ box-shadow:0 0 0 0 rgba(239,62,46,0); }
+}
+
+/* ---- mobile: shift bottom-left, clear of the closing CTA on the right ---- */
+@media (max-width:640px){
+  .surf{ right:auto; left:14px; bottom:14px; }
+  .surf-card{ right:auto; left:0; transform-origin:bottom left; }
+  .surf-card{ width:min(300px, calc(100vw - 28px)); }
+}
+
+/* ---- reduced motion: no bob, no drift, no spring, instant reveal ---- */
+@media (prefers-reduced-motion:reduce){
+  .surf{ transition:none; transform:none; }
+  .surf-pill, .surf-sq--1, .surf-sq--2, .surf-sq--3, .surf-dot{ animation:none; }
+  .surf-card{ transition:opacity .01ms; transform:none; }
+  .surf[data-state="expanded"] .surf-pill{ transform:none; }
+  .surf-windarrow{ transition:none; }
+}
