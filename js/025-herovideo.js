@@ -8,13 +8,14 @@
   if (navigator.connection && navigator.connection.saveData) return;
 
   var VIDEO = mount.getAttribute('data-video');
+  var START = parseInt(mount.getAttribute('data-start') || '0', 10);
   var player = null;
 
   function init() {
     player = new YT.Player('hero-yt', {
       videoId: VIDEO,
       playerVars: {
-        autoplay: 1, mute: 1, controls: 0, loop: 1, playlist: VIDEO,
+        autoplay: 1, mute: 1, controls: 0, start: START,
         playsinline: 1, rel: 0, iv_load_policy: 3, fs: 0, disablekb: 1,
         modestbranding: 1, origin: location.origin
       },
@@ -25,7 +26,7 @@
         },
         onStateChange: function (e) {
           if (e.data === YT.PlayerState.PLAYING) shell.classList.add('is-playing');
-          if (e.data === YT.PlayerState.ENDED) e.target.playVideo();
+          if (e.data === YT.PlayerState.ENDED) { e.target.seekTo(START, true); e.target.playVideo(); }
         }
       }
     });
