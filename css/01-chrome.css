@@ -6,25 +6,46 @@
 .chrome-preloader{
   position:fixed; inset:0; z-index:100;
   display:grid; place-items:center;
-  background:var(--cream);
+  background:var(--ink);
   transition:transform .85s cubic-bezier(.76,0,.24,1);
   will-change:transform;
 }
 .chrome-preloader--hidden{ transform:translateY(-100%); }
 
-.chrome-preloader__badge{
-  background:var(--ink);
-  border-radius:var(--radius-lg);
-  padding:44px 52px;
-  box-shadow:var(--shadow);
-  animation:chrome-pulse 1.9s ease-in-out infinite;
+.chrome-preloader__stage{
+  position:relative;
+  display:grid; place-items:center;
+  width:min(300px, 64vw); aspect-ratio:1;
+}
+/* thin ring progress feel, drawn behind the mark */
+.chrome-preloader__stage::before{
+  content:""; position:absolute; inset:2%;
+  border-radius:50%;
+  border:2px solid rgba(242,233,206,.14);
+  border-top-color:rgba(242,233,206,.55);
+  animation:chrome-ring 1.5s cubic-bezier(.6,.1,.3,1) infinite;
+}
+/* soft 12-point star pulsing behind the logo */
+.chrome-preloader__star{
+  position:absolute; width:112%; height:auto;
+  opacity:.1;
+  animation:chrome-star-pulse 2.6s ease-in-out infinite;
+  will-change:transform, opacity;
 }
 .chrome-preloader__mark{
-  width:min(230px, 56vw); height:auto;
+  position:relative; z-index:1;
+  width:min(200px, 46vw); height:auto;
+  animation:chrome-mark-breathe 2.6s ease-in-out infinite;
+  will-change:transform;
 }
-@keyframes chrome-pulse{
+@keyframes chrome-ring{ to{ transform:rotate(360deg); } }
+@keyframes chrome-star-pulse{
+  0%,100%{ transform:scale(.94) rotate(0deg); opacity:.08; }
+  50%{ transform:scale(1.06) rotate(6deg); opacity:.16; }
+}
+@keyframes chrome-mark-breathe{
   0%,100%{ transform:scale(1); }
-  50%{ transform:scale(1.045); }
+  50%{ transform:scale(1.04); }
 }
 
 /* keep the page from scrolling while the preloader is up */
@@ -61,9 +82,15 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
 
 /* left links */
 .chrome-nav__links{
-  display:flex; align-items:center; gap:26px;
+  display:flex; align-items:center; gap:16px;
   list-style:none; margin:0; padding:0;
   justify-self:start;
+}
+/* tiny star separator between nav links */
+.chrome-nav__sep{
+  color:var(--terra); font-size:9px; line-height:1;
+  opacity:.55; user-select:none; pointer-events:none;
+  transform:translateY(-1px);
 }
 .chrome-nav__link{
   position:relative; text-decoration:none;
@@ -91,9 +118,21 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
 
 /* center brand mark */
 .chrome-nav__brand{
-  justify-self:center; display:block; line-height:0;
+  justify-self:center; display:flex; align-items:center; justify-content:center;
+  line-height:0; padding:4px 8px; border-radius:12px;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
 }
-.chrome-nav__brand img{ width:150px; height:auto; }
+.chrome-nav__brand:hover{ transform:scale(1.03); }
+.chrome-nav__wordmark{ width:180px; height:auto; }
+
+/* compact star + Shrikhand lockup — mobile only, hidden on desktop */
+.chrome-nav__lockup{ display:none; align-items:center; gap:9px; }
+.chrome-nav__lockup-star{ width:22px; height:22px; }
+.chrome-nav__lockup-text{
+  font-family:var(--font-display); font-weight:400;
+  font-size:15px; letter-spacing:.01em; color:var(--ink);
+  line-height:1; white-space:nowrap;
+}
 
 /* right side */
 .chrome-nav__right{
@@ -146,7 +185,11 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
 .foot__inner{
   display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px;
 }
-.foot__mark{ width:150px; height:auto; }
+.foot__mark{
+  width:180px; height:auto;
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.foot__mark:hover{ transform:rotate(15deg); }
 .foot__nav{
   display:flex; flex-wrap:wrap; justify-content:center; gap:8px 28px;
 }
@@ -159,9 +202,25 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
 .foot__tag{
   margin:6px 0 0; font-size:12px; letter-spacing:.18em; color:var(--cream);
 }
+/* stacked wordmark — the "back cover" sign-off */
+.foot__wordmark{
+  width:120px; height:auto; margin:6px 0 2px;
+  opacity:.9;
+}
 .foot__fine{
   margin:0; font-size:12px; letter-spacing:.01em;
   color:var(--cream); opacity:.5; max-width:44ch;
+}
+.foot__credit-link{
+  color:inherit;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  text-decoration-color:rgba(242,233,206,.4);
+  transition:text-decoration-color .2s ease, color .2s ease;
+}
+.foot__credit-link:hover{
+  color:var(--terra);
+  text-decoration-color:currentColor;
 }
 
 /* ============================================================
@@ -188,22 +247,29 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
     padding:8px 8px 8px 8px;
   }
   .chrome-nav__links{ display:none; }
-  .chrome-nav__brand{ justify-self:start; }
-  .chrome-nav__brand img{ width:118px; }
+  .chrome-nav__brand{ justify-self:start; padding:2px 4px; }
+  .chrome-nav__wordmark{ display:none; }
+  .chrome-nav__lockup{ display:inline-flex; }
   .chrome-nav__burger{ display:block; }
   .chrome-nav__cta{ padding:11px 16px; font-size:11px; letter-spacing:.06em; }
 }
 
 @media (max-width:420px){
   .chrome-nav__cta{ padding:10px 13px; }
-  .chrome-nav__brand img{ width:104px; }
+  .chrome-nav__lockup-star{ width:20px; height:20px; }
+  .chrome-nav__lockup-text{ font-size:13px; }
 }
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   .chrome-preloader{ transition:opacity .3s ease; }
   .chrome-preloader--hidden{ transform:none; opacity:0; }
-  .chrome-preloader__badge{ animation:none; }
+  .chrome-preloader__stage::before,
+  .chrome-preloader__star,
+  .chrome-preloader__mark{ animation:none; }
+  .chrome-preloader__star{ opacity:.12; }
   .chrome-ann__track{ animation:none; }
   .chrome-nav__drawer{ animation:none; }
+  .foot__mark{ transition:none; }
+  .foot__mark:hover{ transform:none; }
 }

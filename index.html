@@ -18,13 +18,17 @@
   <link rel="stylesheet" href="css/05-route.css">
   <link rel="stylesheet" href="css/055-map.css">
   <link rel="stylesheet" href="css/06-money.css">
+  <link rel="stylesheet" href="css/065-brand.css">
   <link rel="stylesheet" href="css/07-closing.css">
   <link rel="stylesheet" href="css/09-motion.css">
 </head>
 <body>
 <!-- ============ PRELOADER ============ -->
 <div class="chrome-preloader" id="chrome-preloader" role="status" aria-label="Loading">
-  <div class="chrome-preloader__badge">
+  <div class="chrome-preloader__stage">
+    <img class="chrome-preloader__star"
+         src="assets/brand/sunburst-star-icon-cream.svg"
+         alt="" aria-hidden="true" width="1120" height="1120" />
     <img class="chrome-preloader__mark"
          src="assets/brand/sunburst-stacked-cream.svg"
          alt="Bro Knows A Spot" width="886" height="686" />
@@ -49,13 +53,20 @@
   <nav class="chrome-nav__pill wrap" aria-label="Primary">
     <ul class="chrome-nav__links">
       <li><a class="chrome-nav__link" href="#spots">The&nbsp;Trip</a></li>
+      <li class="chrome-nav__sep" aria-hidden="true">&#10022;</li>
       <li><a class="chrome-nav__link" href="#route">Route</a></li>
+      <li class="chrome-nav__sep" aria-hidden="true">&#10022;</li>
       <li><a class="chrome-nav__link" href="#money">The&nbsp;Money</a></li>
     </ul>
 
     <a class="chrome-nav__brand" href="#top" aria-label="Bro Knows A Spot — home">
-      <img src="assets/brand/sunburst-horizontal-ink.svg"
+      <img class="chrome-nav__wordmark" src="assets/brand/sunburst-horizontal-ink.svg"
            alt="Bro Knows A Spot" width="2253" height="270" />
+      <span class="chrome-nav__lockup" aria-hidden="true">
+        <img class="chrome-nav__lockup-star" src="assets/brand/sunburst-star-icon-ink.svg"
+             alt="" width="24" height="24" />
+        <span class="chrome-nav__lockup-text">Bro Knows A Spot</span>
+      </span>
     </a>
 
     <div class="chrome-nav__right">
@@ -80,7 +91,7 @@
 
 <section id="hero" class="hero grain" aria-label="South Coast '26 — trip intro">
   <div class="hero-bg" role="img" aria-label="Aerial view of a surf-lined golden coastline in Sri Lanka"></div>
-  <div class="hero-video" aria-hidden="true"><div id="hero-yt" data-video="qrtL3R05Tdw"></div></div>
+  <div class="hero-video" aria-hidden="true"><div id="hero-yt" data-video="4RBTVKVjFTY"></div></div>
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <!-- zine typewriter furniture: metadata corners -->
@@ -92,7 +103,6 @@
 
     <h1 class="display hero-title reveal" data-delay="1" aria-label="We found your spot.">
       We found <span class="hero-accent">your</span> <span class="hero-spotword">sp<span class="hero-star"><svg viewBox="0 0 24 24" width="1em" height="1em" role="presentation" focusable="false"><path d="M12.00 1.00 L13.71 5.62 L17.50 2.47 L16.67 7.33 L21.53 6.50 L18.38 10.29 L23.00 12.00 L18.38 13.71 L21.53 17.50 L16.67 16.67 L17.50 21.53 L13.71 18.38 L12.00 23.00 L10.29 18.38 L6.50 21.53 L7.33 16.67 L2.47 17.50 L5.62 13.71 L1.00 12.00 L5.62 10.29 L2.47 6.50 L7.33 7.33 L6.50 2.47 L10.29 5.62 Z"/></svg></span>t.</span>
-      <img class="hero-stamp" src="assets/zine/scribble-stamp.png" alt="" aria-hidden="true" width="90" height="90" loading="lazy" decoding="async">
     </h1>
 
     <p class="hero-sub reveal" data-delay="2">
@@ -291,7 +301,6 @@
     </div>
 
     <div class="stay-transport reveal">
-      <img class="stay-transport-img" src="assets/zine/tuk-print.png" alt="Illustrated print of a red tuk-tuk" loading="lazy" width="90">
       <p class="stay-transport-copy">Scooters under everyone all week. Tuk-tuks on move days. Airport both ways.</p>
       <p class="mono stay-transport-mono">CMB &rarr; AHANGAMA &middot; 2H40 BY VAN</p>
     </div>
@@ -303,12 +312,6 @@
   <div class="wrap">
     <p class="label route-label reveal">The Route</p>
     <h2 class="display route-title reveal" data-delay="1">Down the golden strip.</h2>
-
-    <div class="route-map-card reveal" data-delay="2">
-      <img class="route-map-img" src="assets/img/route_map.svg" width="1180" height="430" loading="lazy"
-        alt="Map of Sri Lanka's south coast showing the route from Colombo airport through Ahangama, Weligama and Mirissa to Hiriketiya">
-      <p class="label route-map-caption">CMB &rarr; AHANGAMA &rarr; WELIGAMA &rarr; MIRISSA &rarr; HIRIKETIYA</p>
-    </div>
 
     <ol class="route-days">
       <li class="route-day reveal" data-delay="1">
@@ -425,6 +428,24 @@
 
 </section>
 
+<!-- ============ 065 · BRAND BREAK — full-bleed ink exhale before the closing CTA ============ -->
+<section id="brand" class="brand grain" aria-label="Bro Knows A Spot">
+  <div class="brand-inner">
+    <img class="brand-seal reveal" src="assets/brand/sunburst-sticker-terracotta.svg"
+         alt="" aria-hidden="true" width="130" height="130" />
+    <p class="mono brand-meta reveal" data-delay="1">Trip N&ordm;&nbsp;001 &middot; South Coast &rsquo;26 &middot; 05&deg;58&prime;N&nbsp;80&deg;25&prime;E</p>
+  </div>
+
+  <div class="brand-marquee" aria-hidden="true">
+    <div class="brand-track">
+      <span class="brand-word display">Bro Knows A Spot&nbsp;&#10022;&nbsp;Worth The Detour.&nbsp;&#10022;&nbsp;</span>
+      <span class="brand-word display">Bro Knows A Spot&nbsp;&#10022;&nbsp;Worth The Detour.&nbsp;&#10022;&nbsp;</span>
+    </div>
+  </div>
+
+  <span class="sr-only">Bro Knows A Spot &mdash; Worth the detour.</span>
+</section>
+
 <section id="closing" class="closing grain" aria-label="Claim a seat on South Coast '26">
   <div class="closing-bg" role="img" aria-label="Friends jumping mid-air on the beach at sunset"></div>
   <div class="closing-scrim" aria-hidden="true"></div>
@@ -442,6 +463,9 @@
       <a class="pill pill--cream closing-btn" href="https://wa.me/919063492584?text=I%20want%20a%20seat%20on%20South%20Coast%20%2726" target="_blank" rel="noopener">Claim a seat</a>
       <p class="label closing-label">Worth the detour.</p>
     </div>
+
+    <img class="closing-wordmark reveal" data-delay="3" src="assets/brand/sunburst-horizontal-cream.svg"
+         alt="Bro Knows A Spot" width="2253" height="270" />
   </div>
 
   <img class="closing-printmark reveal" src="assets/zine/lighthouse-print.png" alt="" aria-hidden="true" width="110" />
@@ -461,7 +485,12 @@
     </nav>
 
     <p class="foot__tag label">Bro Knows A Spot · South Coast '26 · Worth the detour.</p>
+
+    <img class="foot__wordmark" src="assets/brand/sunburst-stacked-cream.svg"
+         alt="" aria-hidden="true" width="886" height="686" />
+
     <p class="foot__fine">Photography: Wikimedia Commons &amp; Openverse contributors (CC licenses).</p>
+    <p class="foot__fine">Hero film: &ldquo;Sun-Stained.&rdquo; by <a class="foot__credit-link" href="https://www.youtube.com/@IZXAaep" target="_blank" rel="noopener">IZXA</a></p>
   </div>
 </footer>
 

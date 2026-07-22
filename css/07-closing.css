@@ -89,6 +89,14 @@
   text-shadow:0 1px 14px rgba(34,26,18,.5);
 }
 
+/* brand bookend — cream wordmark closing out the video-hero → closing arc */
+.closing-wordmark{
+  width:170px; height:auto;
+  margin:44px auto 0;
+  opacity:.92;
+  filter:drop-shadow(0 3px 18px rgba(34,26,18,.5));
+}
+
 @media (max-width:640px){
   .closing{ min-height:82vh; padding:80px 0 64px; }
   .closing-star{ width:44px; height:44px; margin-bottom:16px; }
@@ -96,6 +104,7 @@
   .closing-cta{ width:min(320px,100%); }
   .closing-btn{ justify-content:center; }
   .closing-printmark{ width:72px; right:14px; bottom:14px; }
+  .closing-wordmark{ width:140px; margin-top:34px; }
 }
 
 @media (prefers-reduced-motion:reduce){

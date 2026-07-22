@@ -1,0 +1,71 @@
+/* ============================================================
+   065 · BRAND BREAK — full-bleed ink band, rotating terracotta
+   seal + a big slow Shrikhand marquee. The page's brand exhale.
+   ============================================================ */
+.brand{
+  background:var(--ink); color:var(--cream);
+  overflow:hidden;
+  padding:104px 0 116px;
+  position:relative;
+}
+
+/* seal + metadata, centered above the marquee */
+.brand-inner{
+  display:flex; flex-direction:column; align-items:center; gap:20px;
+  padding:0 22px 56px;
+  text-align:center;
+}
+.brand-seal{
+  width:130px; height:auto;
+  animation:brand-spin 60s linear infinite;
+  will-change:transform;
+}
+@keyframes brand-spin{ to{ transform:rotate(360deg); } }
+
+.brand-meta{
+  color:var(--cream); opacity:.62; margin:0;
+}
+
+/* seamless marquee — two identical copies, translate the pair -50% */
+.brand-marquee{
+  width:100%;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.brand-track{
+  display:flex; width:max-content;
+  animation:brand-marquee 40s linear infinite;
+  will-change:transform;
+}
+.brand-word{
+  flex:0 0 auto;
+  color:var(--cream);
+  font-size:9vw; line-height:1.08;
+  letter-spacing:.01em; text-transform:uppercase;
+  white-space:nowrap;
+  padding-right:.12em;
+}
+@keyframes brand-marquee{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+@media (max-width:640px){
+  .brand{ padding:76px 0 84px; }
+  .brand-inner{ padding-bottom:40px; }
+  .brand-seal{ width:104px; }
+  .brand-word{ font-size:13vw; }
+}
+
+/* reduced motion: no spin, no scroll — one static centered line */
+@media (prefers-reduced-motion:reduce){
+  .brand-seal{ animation:none; }
+  .brand-marquee{
+    -webkit-mask-image:none; mask-image:none;
+    display:flex; justify-content:center;
+  }
+  .brand-track{ animation:none; width:auto; }
+  .brand-word{ font-size:clamp(30px, 8vw, 76px); }
+  .brand-word + .brand-word{ display:none; }
+}
