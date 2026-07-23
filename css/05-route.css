@@ -83,3 +83,24 @@
     padding-top:16px;
   }
 }
+
+
+/* ===== day-by-day table (zine style) — overrides the old 8-col strip ===== */
+.route-note{ color:var(--muted); font-size:15px; line-height:1.6; max-width:64ch; margin:6px 0 10px; }
+.route-days{ display:block; margin-top:26px; }
+.route-day{
+  display:grid; grid-template-columns:150px 220px 1fr; gap:22px; align-items:start;
+  border-top:2px solid rgba(34,26,18,.85); padding:16px 0 20px; margin:0;
+}
+.route-day-head{ display:flex; flex-direction:column; gap:4px; }
+.route-day-num{ font-size:30px; color:var(--terra); line-height:1; }
+.route-day-when{ margin:0; }
+.route-day-mid{ display:flex; flex-direction:column; gap:3px; }
+.route-day-label{ font-weight:800; font-size:17px; margin:0; }
+.route-day-kick{ margin:0; color:var(--terra); }
+.route-day-desc{ margin:0; color:var(--ink-soft); font-size:15px; line-height:1.6; max-width:60ch; }
+.route-day-desc b{ font-weight:800; }
+@media (max-width:760px){
+  .route-day{ grid-template-columns:86px 1fr; gap:12px; }
+  .route-day-desc{ grid-column:2; }
+}
