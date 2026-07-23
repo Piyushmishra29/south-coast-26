@@ -21,6 +21,7 @@
   }
   var START = parseInt(mount.getAttribute('data-start') || '0', 10);
   var player = null;
+  var bufferHide = null;
 
   function init() {
     player = new YT.Player('hero-yt', {
@@ -38,6 +39,7 @@
           e.target.playVideo();
         },
         onStateChange: function (e) {
+          clearTimeout(bufferHide);
           if (e.data === YT.PlayerState.PLAYING) {
             // small delay so real frames are rendering before we crossfade in
             setTimeout(function () { shell.classList.add('is-playing'); }, 250);
@@ -52,6 +54,12 @@
             // genuine pause (tab switch etc): fade to poster, never show YT chrome
             shell.classList.remove('is-playing');
             setTimeout(function () { try { e.target.playVideo(); } catch (err) {} }, 150);
+          } else if (e.data === YT.PlayerState.BUFFERING) {
+            // stalls draw spinners/pause glyphs — drop to poster if it takes >500ms
+            bufferHide = setTimeout(function () { shell.classList.remove('is-playing'); }, 500);
+          } else {
+            // unstarted / cued — poster, always
+            shell.classList.remove('is-playing');
           }
         }
       }
