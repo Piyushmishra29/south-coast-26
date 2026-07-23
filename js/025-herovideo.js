@@ -34,6 +34,7 @@
       events: {
         onReady: function (e) {
           window.__heroPlayer = e.target; // debug/ops handle
+          startLoopWatch(e.target);
           e.target.mute();
           requestMaxQuality(e.target);
           e.target.playVideo();
@@ -69,17 +70,32 @@
   // seamless loop: jump back to START just before the end so YouTube never
   // reaches its end state (no end screen, no fade, no frame flash)
   var loopTimer = null;
+  var notPlayingTicks = 0;
   function startLoopWatch(p) {
     if (loopTimer) return;
     loopTimer = setInterval(function () {
       try {
         var st = p.getPlayerState();
         var d = p.getDuration();
-        if (st === YT.PlayerState.ENDED) { p.seekTo(START, true); p.playVideo(); return; }
-        if (st !== YT.PlayerState.PLAYING) return;
-        if (d > 1 && p.getCurrentTime() > d - 1.2) p.seekTo(START, true);
+
+        if (st === YT.PlayerState.PLAYING) {
+          notPlayingTicks = 0;
+          // seamless loop: jump back before YT can reach its end state
+          if (d > 1 && p.getCurrentTime() > d - 1.2) p.seekTo(START, true);
+          return;
+        }
+
+        // WATCHDOG: any non-playing state — never let YT chrome sit on screen.
+        // Even if state-change events get lost (some browsers drop them), this
+        // poll hides the layer within ~1s and keeps nudging playback back on.
+        notPlayingTicks++;
+        if (notPlayingTicks >= 3) shell.classList.remove('is-playing');
+        if (st === YT.PlayerState.ENDED) { p.seekTo(START, true); p.playVideo(); }
+        else if (st === YT.PlayerState.PAUSED || st === YT.PlayerState.CUED || st === -1) {
+          if (notPlayingTicks % 4 === 0) { p.mute(); p.playVideo(); }
+        }
       } catch (err) {}
-    }, 250);
+    }, 300);
   }
 
   // resume after tab switch / phone unlock instead of sitting on YT's paused UI
