@@ -77,3 +77,14 @@ h1,h2,h3{ margin:0; }
 .scribble{ font-family:'Caveat', cursive; font-weight:600; }
 .rule-dash{ border:none; border-top:2px dashed var(--sand); margin:0; }
 .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* brand separator: the 12-point burst (the O of the logo) as an inline divider */
+.sep-star{
+  display:inline-block;
+  width:.55em; height:.55em;
+  vertical-align:baseline;
+  transform:translateY(.03em);
+  background-color:currentColor;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 1 L13.71 5.62 L17.5 2.47 L16.67 7.33 L21.53 6.5 L18.38 10.29 L23 12 L18.38 13.71 L21.53 17.5 L16.67 16.67 L17.5 21.53 L13.71 18.38 L12 23 L10.29 18.38 L6.5 21.53 L7.33 16.67 L2.47 17.5 L5.62 13.71 L1 12 L5.62 10.29 L2.47 6.5 L7.33 7.33 L6.5 2.47 L10.29 5.62 Z'/></svg>") center / contain no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 1 L13.71 5.62 L17.5 2.47 L16.67 7.33 L21.53 6.5 L18.38 10.29 L23 12 L18.38 13.71 L21.53 17.5 L16.67 16.67 L17.5 21.53 L13.71 18.38 L12 23 L10.29 18.38 L6.5 21.53 L7.33 16.67 L2.47 17.5 L5.62 13.71 L1 12 L5.62 10.29 L2.47 6.5 L7.33 7.33 L6.5 2.47 L10.29 5.62 Z'/></svg>") center / contain no-repeat;
+}

@@ -20,7 +20,7 @@
   var CACHE_KEY = 'bkas-surf-v1';
   var CACHE_MS = 15 * 60 * 1000;
 
-  var STAR = '\u2003\u2726\u2003';   /* ✦ segment separator (matches the static &#10022;) */
+  var STAR = '\u2003<span class="sep-star"></span>\u2003';   /* the logo's 12-point burst as separator */
   var DEG = '°';
   var DASH = '—';     /* — */
   var MID = '·';      /* · */
@@ -140,13 +140,13 @@
     if (reduced) {
       /* static, centered single-line summary — never inject the marquee */
       ticker.classList.add('hero-ticker--rm');
-      groups[0].textContent = wire.summary;
+      groups[0].innerHTML = wire.summary;
       if (groups[1]) groups[1].textContent = '';
       return true;
     }
 
     /* live marquee: fill both groups, keep the -50% loop, re-time to hold speed constant */
-    for (var i = 0; i < groups.length; i++) groups[i].textContent = wire.group;
+    for (var i = 0; i < groups.length; i++) groups[i].innerHTML = wire.group;
     requestAnimationFrame(function () {
       var w = track.scrollWidth;
       if (w && isFinite(w)) {
