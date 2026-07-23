@@ -177,40 +177,90 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
 .chrome-nav__drawer-link:hover{ background:var(--cream-deep); color:var(--terra); }
 @keyframes chrome-drawer-in{ from{ opacity:0; transform:translateY(-8px); } to{ opacity:1; transform:none; } }
 
-/* ---------- FOOTER ---------- */
+/* ---------- FOOTER — zine back cover / colophon ---------- */
 .foot{
+  position:relative; overflow:hidden;
   background:var(--ink); color:var(--cream);
-  padding:72px 0 56px; margin-top:0;
+  padding:64px 0 0; margin-top:0;
 }
 .foot__inner{
-  display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px;
+  position:relative;
 }
-.foot__mark{
-  width:180px; height:auto;
-  transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+
+/* TOP ZONE — dashed sand rule + stamp-placed seal */
+.foot__rule{
+  border-top-color:rgba(228,213,188,.42);   /* --sand, dimmed for ink ground */
+  margin-bottom:52px;
 }
-.foot__mark:hover{ transform:rotate(15deg); }
-.foot__nav{
-  display:flex; flex-wrap:wrap; justify-content:center; gap:8px 28px;
+.foot__seal{
+  position:absolute; top:-46px; right:4px; z-index:2;
+  width:104px; height:auto;
+  transform:rotate(8deg);
+  transition:transform .6s cubic-bezier(.34,1.56,.64,1);
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.32));
 }
-.foot__link{
-  text-decoration:none; color:var(--cream);
-  font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-  opacity:.82; transition:opacity .2s ease, color .2s ease;
+.foot__seal:hover{ transform:rotate(368deg); }
+
+/* COLOPHON GRID */
+.foot__colophon{
+  display:grid;
+  grid-template-columns:1.15fr .8fr 1.25fr;
+  gap:44px 40px;
+  align-items:start;
 }
-.foot__link:hover{ opacity:1; color:var(--terra); }
-.foot__tag{
-  margin:6px 0 0; font-size:12px; letter-spacing:.18em; color:var(--cream);
-}
-/* stacked wordmark — the "back cover" sign-off */
+.foot__col{ min-width:0; }
+
+/* [a] imprint */
 .foot__wordmark{
-  width:120px; height:auto; margin:6px 0 2px;
-  opacity:.9;
+  width:150px; height:auto; display:block;
+}
+.foot__imprint{
+  margin:16px 0 0; max-width:26ch;
+  color:var(--sand); opacity:.9; line-height:1.6;
+}
+
+/* shared kicker */
+.foot__kicker{
+  margin:0 0 16px; color:var(--marigold); opacity:.95;
+}
+
+/* [b] the pages */
+.foot__nav{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column; gap:12px;
+}
+.foot__nav li{ margin:0; }
+.foot__link{
+  position:relative; display:inline-block;
+  text-decoration:none; color:var(--cream);
+  font-family:var(--font-display); font-size:20px; line-height:1;
+  opacity:.9; transition:color .2s ease, transform .25s ease, opacity .2s ease;
+}
+.foot__link::before{
+  content:"\2726"; /* ✦ */
+  position:absolute; left:-1.35em; top:50%;
+  transform:translateY(-50%) scale(.4);
+  color:var(--terra); opacity:0;
+  transition:opacity .22s ease, transform .22s ease;
+}
+.foot__link:hover,
+.foot__link:focus-visible{
+  color:var(--marigold); opacity:1; transform:translateX(1.35em);
+}
+.foot__link:hover::before,
+.foot__link:focus-visible::before{
+  opacity:1; transform:translateY(-50%) scale(1);
+}
+
+/* [c] the fine print */
+.foot__meta{
+  margin:0 0 7px; color:var(--sand); opacity:.72; line-height:1.5;
 }
 .foot__fine{
-  margin:0; font-size:12px; letter-spacing:.01em;
-  color:var(--cream); opacity:.5; max-width:44ch;
+  margin:14px 0 0; font-size:12px; letter-spacing:.01em; line-height:1.6;
+  color:var(--cream); opacity:.5; max-width:42ch;
 }
+.foot__col--fine .foot__fine:first-of-type{ margin-top:18px; }
 .foot__credit-link{
   color:inherit;
   text-decoration:underline;
@@ -218,9 +268,33 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
   text-decoration-color:rgba(242,233,206,.4);
   transition:text-decoration-color .2s ease, color .2s ease;
 }
-.foot__credit-link:hover{
-  color:var(--terra);
+.foot__credit-link:hover,
+.foot__credit-link:focus-visible{
+  color:var(--marigold);
   text-decoration-color:currentColor;
+}
+
+/* BOTTOM ZONE — oversized sign-off cropped by the page edge */
+.foot__signoff{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:24px; margin-top:56px;
+}
+.foot__detour{
+  margin:0 0 -.14em;   /* crop the descender line against the footer edge */
+  font-family:var(--font-display);
+  font-size:clamp(40px, 11vw, 90px);
+  line-height:.9; color:var(--cream);
+  white-space:nowrap;
+}
+.foot__copy{
+  margin:0 0 1.1em; flex:0 0 auto;
+  color:var(--sand); opacity:.6;
+}
+
+/* keyboard focus — visible on ink */
+.foot__link:focus-visible,
+.foot__credit-link:focus-visible{
+  outline:2px solid var(--marigold); outline-offset:4px; border-radius:2px;
 }
 
 /* ============================================================
@@ -252,6 +326,15 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
   .chrome-nav__lockup{ display:inline-flex; }
   .chrome-nav__burger{ display:block; }
   .chrome-nav__cta{ padding:11px 16px; font-size:11px; letter-spacing:.06em; }
+
+  /* footer colophon: stack the three zones */
+  .foot__colophon{ grid-template-columns:1fr; gap:38px; }
+  .foot__seal{ width:88px; top:-40px; right:0; }
+  .foot__signoff{
+    flex-direction:column; align-items:flex-start; gap:14px; margin-top:44px;
+  }
+  .foot__detour{ font-size:clamp(38px, 15vw, 68px); white-space:normal; }
+  .foot__copy{ margin:0 0 .6em; }
 }
 
 @media (max-width:420px){
@@ -270,6 +353,12 @@ html.chrome-locked, html.chrome-locked body{ overflow:hidden; }
   .chrome-preloader__star{ opacity:.12; }
   .chrome-ann__track{ animation:none; }
   .chrome-nav__drawer{ animation:none; }
-  .foot__mark{ transition:none; }
-  .foot__mark:hover{ transform:none; }
+  .foot__seal{ transition:none; }
+  .foot__seal:hover{ transform:rotate(8deg); }
+  .foot__link{ transition:color .2s ease, opacity .2s ease; }
+  .foot__link:hover,
+  .foot__link:focus-visible{ transform:none; }
+  .foot__link::before{ transition:opacity .2s ease; }
+  .foot__link:hover::before,
+  .foot__link:focus-visible::before{ transform:translateY(-50%) scale(1); }
 }

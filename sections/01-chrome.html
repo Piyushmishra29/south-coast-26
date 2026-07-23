@@ -64,24 +64,53 @@
 </header>
 
 <!-- FOOTER -->
+<!-- the zine back cover / colophon -->
 <footer class="foot">
   <div class="foot__inner wrap">
-    <img class="foot__mark" src="assets/brand/sunburst-sticker-cream.svg"
-         alt="Bro Knows A Spot" width="1200" height="1200" />
 
-    <nav class="foot__nav" aria-label="Footer">
-      <a class="foot__link" href="#spots">The Trip</a>
-      <a class="foot__link" href="#route">Route</a>
-      <a class="foot__link" href="#money">The Money</a>
-      <a class="foot__link" href="https://wa.me/919063492584?text=I%20want%20a%20seat%20on%20South%20Coast%20%2726">Claim a Seat</a>
-    </nav>
+    <!-- TOP ZONE: dashed rule + stamp-placed seal -->
+    <hr class="foot__rule rule-dash" />
+    <img class="foot__seal" src="assets/brand/sunburst-sticker-cream.svg"
+         alt="Bro Knows A Spot seal" width="1200" height="1200" />
 
-    <p class="foot__tag label">Bro Knows A Spot · South Coast '26 · Worth the detour.</p>
+    <!-- COLOPHON GRID -->
+    <div class="foot__colophon">
 
-    <img class="foot__wordmark" src="assets/brand/sunburst-stacked-cream.svg"
-         alt="" aria-hidden="true" width="886" height="686" />
+      <!-- [a] IMPRINT -->
+      <div class="foot__col foot__col--brand">
+        <img class="foot__wordmark" src="assets/brand/sunburst-stacked-cream.svg"
+             alt="Bro Knows A Spot" width="886" height="686" />
+        <p class="foot__imprint mono">EST. 2026 · TRIPS FOR EVERYONE WHO ASKS &lsquo;WHERE?&rsquo;</p>
+      </div>
 
-    <p class="foot__fine">Photography: Wikimedia Commons &amp; Openverse contributors (CC licenses).</p>
-    <p class="foot__fine">Hero film: &ldquo;Sri Lanka &mdash; Heart of the Indian Ocean&rdquo; by <a class="foot__credit-link" href="https://www.youtube.com/@beautifuldestinationsyoutube" target="_blank" rel="noopener">Beautiful Destinations</a></p>
+      <!-- [b] THE PAGES -->
+      <nav class="foot__col foot__col--nav" aria-label="Footer">
+        <p class="foot__kicker mono">The Pages</p>
+        <ul class="foot__nav">
+          <li><a class="foot__link" href="#spots">The trip</a></li>
+          <li><a class="foot__link" href="#route">Route</a></li>
+          <li><a class="foot__link" href="#money">The money</a></li>
+          <li><a class="foot__link" href="https://wa.me/919063492584?text=I%20want%20a%20seat%20on%20South%20Coast%20%2726">Claim a seat</a></li>
+        </ul>
+      </nav>
+
+      <!-- [c] THE FINE PRINT -->
+      <div class="foot__col foot__col--fine">
+        <p class="foot__kicker mono">The Fine Print</p>
+        <p class="foot__meta mono">Trip N&ordm; 001 · South Coast &rsquo;26</p>
+        <p class="foot__meta mono">05&deg;58&prime;N 80&deg;25&prime;E</p>
+        <p class="foot__meta mono">Printed slightly wrong on purpose</p>
+        <p class="foot__fine">Photography: Wikimedia Commons &amp; Openverse contributors (CC licenses).</p>
+        <p class="foot__fine">Hero film: &ldquo;Sri Lanka &mdash; Heart of the Indian Ocean&rdquo; by <a class="foot__credit-link" href="https://www.youtube.com/@beautifuldestinationsyoutube" target="_blank" rel="noopener">Beautiful Destinations</a></p>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM ZONE: oversized sign-off, cropped by the bottom edge -->
+    <div class="foot__signoff">
+      <p class="foot__detour">Worth the detour.</p>
+      <p class="foot__copy mono">&copy; 2026 Bro Knows A Spot · All spots earned</p>
+    </div>
+
   </div>
 </footer>
