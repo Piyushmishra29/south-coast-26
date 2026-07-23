@@ -194,3 +194,25 @@
   .hero-video{ display:none; }
 }
 .hero-spotword{ white-space:nowrap; }
+
+/* ===== hero text polish: hand-corrected headline + ticket sub ===== */
+.hero-title{ line-height:.98; }
+.hero-l1, .hero-l2{ display:inline; }
+.hero-your{
+  color:var(--acid);
+  font-size:1.06em;
+  display:inline-block;
+  transform:rotate(-4deg) translateY(.04em);
+  margin:0 .06em;
+  text-shadow:0 3px 26px rgba(34,26,18,.5);
+}
+.hero-sub{ font-weight:700; letter-spacing:.01em; }
+.hero-ticket{
+  color:var(--cream); opacity:.85;
+  font-size:12px; letter-spacing:.22em;
+  margin:14px auto 0;
+  text-shadow:0 1px 12px rgba(34,26,18,.6);
+}
+@media (max-width:640px){
+  .hero-ticket{ font-size:10px; letter-spacing:.16em; max-width:92vw; }
+}
