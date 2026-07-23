@@ -74,14 +74,18 @@
 }
 
 .hero-star{
-  display:inline-flex;
-  align-items:center;
-  margin-left:.12em;
+  display:inline-block;
+  margin:0 .01em;
   color:var(--cream);
   vertical-align:baseline;
-  transform:translateY(.02em);
+  line-height:0;
 }
-.hero-star svg{ fill:currentColor; filter:drop-shadow(0 2px 10px rgba(34,26,18,.4)); }
+.hero-star svg{
+  width:.68em; height:.68em;      /* match Shrikhand's lowercase o body */
+  transform:translateY(.045em);   /* sit on the baseline, not the cap line */
+  fill:currentColor;
+  filter:drop-shadow(0 2px 10px rgba(34,26,18,.4));
+}
 
 /* rubber-stamp near the headline corner */
 .hero-stamp{

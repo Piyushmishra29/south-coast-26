@@ -32,6 +32,7 @@
       },
       events: {
         onReady: function (e) {
+          window.__heroPlayer = e.target; // debug/ops handle
           e.target.mute();
           requestMaxQuality(e.target);
           e.target.playVideo();
@@ -64,11 +65,13 @@
     if (loopTimer) return;
     loopTimer = setInterval(function () {
       try {
-        if (p.getPlayerState() !== YT.PlayerState.PLAYING) return;
+        var st = p.getPlayerState();
         var d = p.getDuration();
-        if (d && p.getCurrentTime() > d - 0.7) p.seekTo(START, true);
+        if (st === YT.PlayerState.ENDED) { p.seekTo(START, true); p.playVideo(); return; }
+        if (st !== YT.PlayerState.PLAYING) return;
+        if (d > 1 && p.getCurrentTime() > d - 1.2) p.seekTo(START, true);
       } catch (err) {}
-    }, 300);
+    }, 250);
   }
 
   // resume after tab switch / phone unlock instead of sitting on YT's paused UI

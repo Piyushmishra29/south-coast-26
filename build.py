@@ -18,8 +18,14 @@ for p in frags:
     else:
         body_parts.append(html)
 
-links = "\n".join(f'  <link rel="stylesheet" href="{c}">' for c in css)
-scripts = "\n".join(f'<script src="{j}" defer></script>' for j in js)
+def stamp(path):
+    try:
+        return int(os.path.getmtime(f"{W}/{path}"))
+    except OSError:
+        return 0
+
+links = "\n".join(f'  <link rel="stylesheet" href="{c}?v={stamp(c)}">' for c in css)
+scripts = "\n".join(f'<script src="{j}?v={stamp(j)}" defer></script>' for j in js)
 
 page = f"""<!DOCTYPE html>
 <html lang="en">
