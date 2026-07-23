@@ -64,14 +64,13 @@
   font-size:clamp(44px, 8.4vw, 96px);
   max-width:15ch;
   margin:0 auto;
-  text-shadow:0 3px 30px rgba(34,26,18,.42);
+  /* shadow via filter: applied AFTER the motion layer's word masks, so it
+     can't be clipped into per-word rectangles like text-shadow was */
+  filter:drop-shadow(0 4px 16px rgba(34,26,18,.5));
 }
 
 /* one accent word — acid is allowed on a dark photo ground */
-.hero-accent{
-  color:var(--acid);
-  text-shadow:0 3px 26px rgba(34,26,18,.5);
-}
+.hero-accent{ color:var(--acid); }
 
 .hero-star{
   display:inline-block;
@@ -206,9 +205,8 @@
   color:var(--acid);
   font-size:1.06em;
   display:inline-block;
-  transform:rotate(-4deg) translateY(.04em);
-  margin:0 .06em;
-  text-shadow:0 3px 26px rgba(34,26,18,.5);
+  transform:rotate(-3deg) translateY(.01em); /* hand-tilt, but sits on the line */
+  margin:0 .05em;
 }
 .hero-sub{ font-weight:700; letter-spacing:.01em; }
 .hero-ticket{
@@ -220,3 +218,18 @@
 @media (max-width:640px){
   .hero-ticket{ font-size:10px; letter-spacing:.16em; max-width:92vw; }
 }
+
+/* ── live conditions wire (js/026-ticker.js) ── */
+.hero-ticker-group{ white-space:nowrap; }
+/* pause the wire on hover (ticker only — nothing else on the page) */
+.hero-ticker:hover .hero-ticker-track{ animation-play-state:paused; }
+
+/* reduced-motion: one centered, static live summary — no marquee, no duplicate */
+.hero-ticker--rm .hero-ticker-track{
+  display:block;
+  width:100%;
+  text-align:center;
+  animation:none;
+  will-change:auto;
+}
+.hero-ticker--rm .hero-ticker-group + .hero-ticker-group{ display:none; }
